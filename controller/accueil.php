@@ -18,7 +18,7 @@ function connexion(){
 		connecterUtilisateur('non','oui');
 	}
 	else {
-		echo "<script>alert('Vous êtes déjà connecté');</script>"
+		echo "<script>alert('Vous êtes déjà connecté');</script>";
 	}
 }
 

@@ -6,10 +6,10 @@
 //Variables globales d'accès au fichiers
 define('WEBROOT', str_replace('index.php', '', substr($_SERVER['SCRIPT_NAME'],1)));
 define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
-define('MODEL', WEBROOT."model/");
-define('VIEW', WEBROOT."view/");
-define('CONTROLLER', WEBROOT."controller/");
-define('CSS', WEBROOT."src/css/");
+define('MODEL', "model/");
+define('VIEW', "view/");
+define('CONTROLLER', "controller/");
+define('CSS', "src/css/");
 
 //Instanciation de la session
 session_start();
