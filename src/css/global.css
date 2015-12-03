@@ -1,0 +1,42 @@
+
+		/*********************************************
+		********	STYLE GENERAL DU SITE WEB	******
+		*********************************************/
+
+
+body {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #CBCBCB;
+	font-family: sans-serif;
+}
+
+header {
+	width: 100%;
+	background-color: #DDD;
+	min-height: 70px;
+	height: 10%;
+}
+
+header #connecBox {
+	width: calc( 10% - 10px );
+	height: 100%;
+	background-color: #D55;
+	padding-left: 5px;
+	padding-right: 5px;
+	overflow: hidden;
+	text-align: center;
+}
+
+
+#contenu {
+	width : calc( 100% - 40px );
+	min-height: calc( 100% - 10% - 40px );
+	right: 0;
+	top: 0;
+	background-color: #FFF;
+	padding: 20px;
+}
