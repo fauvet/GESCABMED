@@ -6,7 +6,7 @@ class Route {
 	/**===========================================================================
 	*						ATTRIBUS DU ROUTEUR	    ==
 	*-----------------------------------------------------------------------------
-	*		==> Classe basée sur le design pattern singleton	    ==
+	* ==> Classe basée sur le design pattern singleton			    ==
 	*									    ==
 	* -> @controller le controller selectionné par l'URL 			    ==
 	* -> @action la fonction (ou action) correspondante dans le controller	    ==
