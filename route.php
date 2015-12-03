@@ -4,14 +4,14 @@
 class Route {
 
 	/**===========================================================================
-	*						ATTRIBUS DU ROUTEUR									==
+	*						ATTRIBUS DU ROUTEUR	    ==
 	*-----------------------------------------------------------------------------
-	*		==> Classe basée sur le design pattern singleton					==
-	*																			==
-	* -> @controller le controller selectionné par l'URL 						==
-	* -> @action la fonction (ou action) correspondante dans le controller		==
-			(peut être nulle -> index) 											==
-	* -> @params les paramètres entrés pour la fonction correspondante			==
+	*		==> Classe basée sur le design pattern singleton	    ==
+	*									    ==
+	* -> @controller le controller selectionné par l'URL 			    ==
+	* -> @action la fonction (ou action) correspondante dans le controller	    ==
+	*		(peut être nulle -> index) 				    ==
+	* -> @params les paramètres entrés pour la fonction correspondante	    ==
 	============================================================================*/
 
 	public $controller;
