@@ -40,8 +40,8 @@ class Medecin {
 	* @return vrai si l'opération s'est bien effectuée, faux sinon
 	*/
 	static function add($nom, $prenom) {
-		$statement = DataBase::$instance->prepare("INSERT INTO medecin(nom, prenom) VALUES (':nom,' ':prenom');");
-		$ret = $statement->exec(array(	':nom'    => $nom,
+		$statement = DataBase::$instance->prepare("INSERT INTO medecin(nom, prenom) VALUES (:nom, :prenom);");
+		$ret = $statement->execute(array(	':nom'    => $nom,
 										':prenom' => $prenom));
 		return $ret;
 	}
@@ -54,7 +54,7 @@ class Medecin {
 	static function delete($id){
 		if (self::exist($id)){
 			$statement = DataBase::$instance->prepare("DELETE FROM medecin WHERE id = :id");
-			$ret = $statement->exec(array(':id' => $id));
+			$ret = $statement->execute(array(':id' => $id));
 			return $ret;
 		}
 		else {return false;}
