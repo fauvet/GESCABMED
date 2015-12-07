@@ -1,0 +1,132 @@
+
+	/**********************************************
+	****   STYLE DE LA PAGE INDEX DE L'ACUEIL   ***
+	***********************************************/
+
+/*
+	Divisions contenant un onglet et une légende
+*/
+.boxAccueil {
+    transition: 0.5s;
+    position: relative;
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0;
+
+    overflow-wrap: break-word;
+}
+
+.boxAccueil:hover {
+    background-color: #F3F3F3;
+    transition: 0.5s;
+}
+
+
+
+/*
+	Légende de la division
+*/
+
+.boxAccueil > h2 {
+    max-width: calc( 100% - 420px );
+    position: relative;
+    top: -200px;
+    left: 420px;
+    margin: 10px 0 10px 10px; 
+}
+
+.boxAccueil > p {
+    max-width: calc( 100% - 420px );
+    position: relative;
+    top: -200px;
+    left: 420px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 0;
+}
+
+
+/*
+	Onglets de la division 
+*/
+.boxAccueil > .encart{
+    width: 400px;
+    height: 100%;
+}
+
+.boxAccueil > #encartPatient{
+    background: url(/gescabmed/src/img/patient.jpg);
+	background-position:center center;
+	background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+
+.boxAccueil > #encartMedecin{
+    background: url(/gescabmed/src/img/medecin.jpg);
+	background-position:center center;
+	background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.boxAccueil > #encartRDV{
+    background: url(/gescabmed/src/img/consultation.png);
+	background-position:center center;
+	background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/*
+	Menus selectionnables dans les onglets
+*/
+.ongletAccueil {
+	position : absolute;
+	width : 398px;
+	margin: 0;
+	padding: 0;
+	bottom : 0;
+
+	transition: 0.5s;
+	opacity: 0;
+
+	background-color: rgba(255,255,255,0.8);
+	border: 1px solid black;
+	list-style: none;
+	text-align: center;
+}
+
+.encart:hover > .ongletAccueil{
+	transition: 0.5s;
+	opacity: 1;
+}
+
+.ongletAccueil li {
+	padding: 8px;
+	border-bottom: 1px solid black;
+}
+
+.ongletAccueil > li:first-child {
+	background-color: rgba(25, 25, 119, 0.9);
+	color: white;
+	padding-left: 10px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.ongletAccueil > li:first-child:hover{
+	background-color: rgba(25, 25, 119, 1);
+}
+
+.ongletAccueil a:last-child > li {
+	border : none;
+}
+
+.ongletAccueil li:hover {
+	transition: 0.5s;
+	color: white;
+	background-color: #32F;
+}

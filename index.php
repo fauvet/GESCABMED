@@ -4,24 +4,18 @@
 *********************************************/
 
 //Variables globales d'accès au fichiers
-define('WEBROOT', str_replace('index.php', '', substr($_SERVER['SCRIPT_NAME'],1)));
+define('WEBROOT', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
 define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
 define('MODEL', "model/");
 define('VIEW', "view/");
 define('CONTROLLER', "controller/");
-define('CSS', "src/css/");
+define('CSS', WEBROOT."src/css/");
 
 //Instanciation de la session
 session_start();
 
-//Connexion à la base de bdd
-$dsn = 'mysql:dbname=gescabmed;host=localhost';
-$user = 'root';
-$pdw = '';
-$bdd = new PDO($dsn, $user, $pdw);
-
-//Inclusion des fichiers
-require_once 'route.php';
+//Inclusion de l'autoloader
+require_once 'autoloader.php';
 
 
 //On instancie le routeur
@@ -37,7 +31,9 @@ $r = Route::getInstance();
 		<meta author='Cédric Eloundou & Guillaume Fauvet'>
 
 		<!-- INCLUSION  DU CSS -->
-		<link rel="stylesheet" type="text/css" href=<?php echo "'/".CSS."global.css'"; ?> >
+		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."global.css'"; ?> >
+		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."formulaire.css'"; ?> >
+		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."accueil.css'"; ?> >
 
 		<title>Gestion du cabinet médical</title>
 	
@@ -48,14 +44,34 @@ $r = Route::getInstance();
 		<header>
 			<div id='connecBox'>
 				<?php
-				if(isset($_SESSION['login'])){
+				if(User::isConnected()){
 					echo "<span data-action='deconnecter'>".$_SESSION['login']."<span>";
 				}
 				else {
-					echo "<span data-action='connexion'>Connexion</span>";
+					echo "<span data-action='connexion'><a href='/gescabmed/accueil/connexion'>Connexion</a></span>";
 				}
 				?>
 
+			</div>
+			<div id='Honglets'>
+				<section>Accueil</section>
+				<section>Patients
+				<ul class='Hmenus'>
+					<a href=<?php echo WEBROOT.'patient/ajouter'; ?>>     <li>Ajouter</li></a>
+					<a href=<?php echo WEBROOT.'patient/lister'; ?>>      <li>Lister</li></a>
+					<a href=<?php echo WEBROOT.'patient/statistiques'; ?>><li>Statistiques</li></a>
+				</ul></section>
+				<section>Médecins
+				<ul class='Hmenus'>
+					<a href=<?php echo "'".WEBROOT.'medecin/ajouter'."'"; ?>><li>Ajouter</li></a>
+					<a href=<?php echo "'".WEBROOT.'medecin/lister'."'"; ?> ><li>Lister</li></a>
+				</ul></section>
+				<section>Consultations
+				<ul class='Hmenus'>
+					<a href=<?php echo "'".WEBROOT.'consultation/index'."'"; ?>    ><li>Créer</li></a>
+					<a href=<?php echo "'".WEBROOT.'consultation/afficher'."'"; ?> ><li>Planning</li></a>
+				</ul>
+				</section>
 			</div>
 		</header>
 
