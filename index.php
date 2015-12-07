@@ -54,7 +54,10 @@ $r = Route::getInstance();
 
 			</div>
 			<div id='Honglets'>
-				<section>Accueil</section>
+				<a href=<?php
+					echo WEBROOT;
+				?>
+					><section>Accueil</section></a>
 				<section>Patients
 				<ul class='Hmenus'>
 					<a href=<?php echo WEBROOT.'patient/ajouter'; ?>>     <li>Ajouter</li></a>

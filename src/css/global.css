@@ -78,17 +78,18 @@ header > #Honglets {
 	padding: 0;
 }
 
-#Honglets > section {
+#Honglets section {
 	float: left;
 	width: 150px;
 	height: calc( 100% - 40px - 5px );
 	margin: 10px 10px 0 10px;
 	padding: 10px 10px 20px 10px;
-	border-bottom: 5px solid #11D;
+	border-bottom: 5px solid #FF0000;
 }
 
 #Honglets > section:hover{
 	background-color: #F1F1F1;
+	cursor : pointer;
 }
 
 .Hmenus {
