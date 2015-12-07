@@ -22,7 +22,7 @@ class Patient {
 	static function add($civilite, $nom, $prenom, $date_naissance, $lieu_naissance, $num_secu, $adresse, $cp, $ville, $id_med){
 		$statement = DataBase::$instance->prepare(
 			"INSERT INTO patient(civilite, nom, prenom, date_naissance, lieu_naissance, num_secu, adresse, cp, ville, id_med)
-			VALUES (':civilite', ':nom', ':prenom', ':date_naissance', ':lieu_naissance', ':num_secu', ':adresse', ':cp', ':ville', :id_med );" );
+			VALUES (:civilite, :nom, :prenom, :date_naissance, :lieu_naissance, :num_secu, :adresse, :cp, :ville, :id_med );" );
 
 		$ret = $statement->execute(array(':civilite'       => $civilite,
 										 ':nom'            => $nom,
