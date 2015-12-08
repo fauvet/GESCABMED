@@ -78,4 +78,12 @@ function profil($id){
 
 }
 
+function lister(){
+	//Récupération des données
+	$patients = Patient::selectAll();
+
+	//Inclusion de la vue (tableau qui contient tout)
+	include VIEW."listerPatient.php";
+}
+
 ?>

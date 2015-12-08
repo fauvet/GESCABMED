@@ -1,16 +1,43 @@
 
 table {
-
+	width: 70%;
+	text-align: left;
+	border-collapse: collapse;
+	margin: 20px 15%;
 }
 
-thead {
+th {
+	height: 40px;
+	margin: 0;
+	padding: 5px 0;
+	border: 2px solid white;
+	background-color: #AAA;
+	text-align: center;
+	color: white;
+}
 
+th#th1 {
+	width: 40%;
+}
+
+th#th2{
+	width: 40%;
+}
+
+th#th3{
+	width: 20%;
 }
 
 td {
-	
+	height: 25px;
+	padding: 5px 0;
+	border: 2px solid #FBFBFB;
 }
 
-tr {
+td:last-child {
+	text-align: center;
+}
 
+tr:hover {
+	background-color: #E8E8E8;
 }

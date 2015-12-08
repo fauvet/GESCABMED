@@ -29,4 +29,12 @@ function ajouter(){
 	}
 }
 
+function lister(){
+	//On récupère la liste des médecins travaillant au cabinet
+	$medecins = Medecin::selectAll();
+
+	//On inclu la vue
+	include VIEW."listerMedecin.php";
+}
+
 ?>

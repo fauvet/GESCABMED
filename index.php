@@ -10,6 +10,7 @@ define('MODEL', "model/");
 define('VIEW', "view/");
 define('CONTROLLER', "controller/");
 define('CSS', WEBROOT."src/css/");
+define('JS', WEBROOT."src/js/");
 
 //Instanciation de la session
 session_start();
@@ -34,6 +35,8 @@ $r = Route::getInstance();
 		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."global.css'"; ?> >
 		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."formulaire.css'"; ?> >
 		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."accueil.css'"; ?> >
+		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."tableau.css'"; ?> >
+
 
 		<title>Gestion du cabinet médical</title>
 	
@@ -86,6 +89,10 @@ $r = Route::getInstance();
 			?>
 			
 		</div>
+		
+		<!--INCLUSION DU JAVASCRIPT-->
+		<script type="text/javascript" src=<?php echo JS."ajoutPatient.js"; ?>></script>
+
 	</body>
 
 </html>
