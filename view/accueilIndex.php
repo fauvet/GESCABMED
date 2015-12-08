@@ -1,7 +1,7 @@
 
 			<h1>Site de gestion du cabinet médical</h1>
 
-			<p>GESCABMED permet en seulement quelques clics de Vous pourrez effectuer différentes tâches parmi lesquelles : </p>
+			<p>Bienvenue sur le site de l'hôpital de l'IUT informatique. Survolez les images afin de faire le menu. Vous pourrez effectuer différentes tâches parmi lesquelles : </p>
 
 			<div class='boxAccueil'>
 				<div class='encart' id='encartPatient'>
@@ -13,10 +13,10 @@
 					</ul>
 				</div>
 				<h2>Gestion des patients</h2>
-				<p>	Vous pouvez dans cette section gérer la liste des patients du cabinet. Pour en enregistrer un, il vous suffit
-					de cliquer sur nouvel enregistrement. Pour visualiser le listing complet des patients cliquez sur "liste des patients".
-					Vous pourrez ensuite afficher ou modifier des informations qui les concernent, et même supprimer le patient de la base de données.
-					Enfin vous avez la possibilités de visualiser quelques statistiques sur l'ensemble des patients dans la partie "Statistiques".
+				<p>	Vous pouvez dans cette section gérer la liste des patients du cabinet. Pour en enregistrer un nouveau, il vous suffit
+					de cliquer sur <b>Nouvel enregistrement</b>. Pour visualiser le listing complet des patients cliquez sur <b>Liste des patients</b>.
+					Vous pourrez alors afficher ou modifier l'intégralité des informations.
+					Enfin vous avez la possibilités de visualiser quelques statistiques sur l'ensemble des patients dans la partie <b>Statistiques</b>.
 				</p>
 			</div>
 
@@ -29,9 +29,9 @@
 					</ul>
 				</div>
 				<h2>Gestion des médecins</h2>
-				<p>	Vous pouvez ici gérer l'effectif des médecins travaillant au cabinet. Pour en enregistrer un, il vous suffit
-					de cliquer sur "nouvel enregistrement". Pour visualiser le listing complet des médecins cliquez sur "liste des médecins".
-					Vous pourrez à partir de cette page afficher, modifier ou supprimer un médecin.
+				<p>	Vous pouvez ici gérer l'effectif des médecins travaillant au cabinet. Pour en enregistrer un nouveau , il vous suffit
+					de cliquer sur <b>Nouvel enregistrement</b>. Pour visualiser le listing complet des médecins cliquez sur <b>Liste des médecins</b>.
+					Vous pourrez à partir de cette page afficher, modifier ou retirer un médecin.
 				</p>
 			</div>
 
@@ -43,9 +43,9 @@
 						<a href=<?php echo WEBROOT.'consultation/afficher'; ?> ><li>Afficher le planning</li></a>
 					</ul>
 				</div>
-				<h2>Gérer les consultations et les RDV patients - médecins</h2>
+				<h2>Gérer les consultations patients - médecins</h2>
 				<p>Dans cette dernière section vous pouvez créer et plannifier de nouvelles consultations entre médecins et patients. Pour ce faire
-					cliquez sur "Ajouter une consultation". Si vous souhaitez afficher le planning des rendez-vous déjà prévus 
-					ou bien les supprimer, cliquez sur "Afficher le planning".
+					cliquez sur <b>Ajouter une consultation</b>. Si vous souhaitez afficher ou modifier le planning de l'ensemble des rendez-vous,
+					cliquez sur <b>Afficher le planning</b>.
 				</p>
 			</div>
