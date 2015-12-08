@@ -1,8 +1,7 @@
 
 			<h1>Site de gestion du cabinet médical</h1>
 
-			<p>Passez la souris sur les images des différentes sections répertoriées afin d'avoir accès à tous les liens du site.<br><br>
-			A travers les différentes pages de ce site <b>génialissime</b> vous pourrez effectuer différentes tâches parmi lesquelles : </p>
+			<p>GESCABMED permet en seulement quelques clics de Vous pourrez effectuer différentes tâches parmi lesquelles : </p>
 
 			<div class='boxAccueil'>
 				<div class='encart' id='encartPatient'>
