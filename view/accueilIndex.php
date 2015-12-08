@@ -26,7 +26,7 @@
 					<ul class='ongletAccueil'>
 						<li>MEDECINS</li>
 						<a href=<?php echo WEBROOT.'medecin/ajouter'; ?> ><li>Nouvel enregistrement</li></a>
-						<a href=<?php echo WEBROOT.'medecin/index'; ?> ><li>Liste des médecins</li></a>
+						<a href=<?php echo WEBROOT.'medecin/lister'; ?> ><li>Liste des médecins</li></a>
 					</ul>
 				</div>
 				<h2>Gestion des médecins</h2>

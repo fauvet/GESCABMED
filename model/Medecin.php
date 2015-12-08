@@ -120,6 +120,22 @@ class Medecin {
 		$ret = DataBase::$instance->query("SELECT * FROM medecin;");
 		return $ret->fetchAll();
 	}
+
+	/**
+	* Selectionne le médecin dans la base de données dont l'ID est en paramètre
+	* @param ID du médecin à rechercher
+	* @return un array contenant le nom et prénom du médecin, ou false si rien est trouvé
+	*/
+	static function selectByID($id){
+		//Si aucun ID est renseigné on renvoie faux
+		if(!isset($id) || $id == '')
+			return false;
+		$ret = DataBase::$instance->query("SELECT nom, prenom FROM medecin WHERE id=".$id.";");
+		//Si aucun résultat n'est retrouvé on renvoie faux
+		if(!isset($ret) || $ret == array())
+			return false;
+		return $ret->fetch();
+	}
 }
 
 
