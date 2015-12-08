@@ -71,7 +71,7 @@ $r = Route::getInstance();
 				</ul></section>
 				<section>Consultations
 				<ul class='Hmenus'>
-					<a href=<?php echo "'".WEBROOT.'consultation/index'."'"; ?>    ><li>Créer</li></a>
+					<a href=<?php echo "'".WEBROOT.'consultation/index'."'"; ?>    ><li>Ajouter</li></a>
 					<a href=<?php echo "'".WEBROOT.'consultation/afficher'."'"; ?> ><li>Planning</li></a>
 				</ul>
 				</section>
