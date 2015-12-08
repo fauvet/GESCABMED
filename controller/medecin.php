@@ -11,20 +11,20 @@ function ajouter(){
 
 		//SI tous les champs ont été remplis
 		if ($_POST['nom'] != '' && $_POST['prenom'] != '') {
-			$nom    = $_POST['nom'];
+			$nom    = $_POST['nom'];	
 			$prenom = $_POST['prenom'];
 			$ret = Medecin::add($nom, $prenom);
 
 			//On renvoie le résultat à l'écran
 			if ($ret) {
-				echo "Enregistré !";
+				echo "Médecin enregistré(e)";
 			}
 			else {
-				echo "Erreur interne";
+				echo "Erreur : Veuillez contacter votre administrateur.";
 			}
 		}
 		else {
-			echo "Veuillez remplir tous les champs (en plus c'est pas dur ici...)";
+			echo "<p>Veuillez remplir correctement tous les champs.</p>";
 		}
 	}
 }

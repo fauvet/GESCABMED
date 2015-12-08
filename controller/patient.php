@@ -61,15 +61,15 @@ function ajouter(){
 			$ret = Patient::add($Pcivilite, $Pnom, $Pprenom, $Pdn, $Pln, $Pns, $Padresse, $Pcp, $Pville, $Pmed);
 			//On affiche un message sur la page selon le résultat
 			if ($ret) {
-				echo "<p>Enregistré !</p>";
+				echo "<p>Patient(e) enregistré(e)</p>";
 			}
 			else {
-				echo "<p>Erreur interne...</p>";
+				echo "<p>Erreur : Veuillez contacter votre administrateur.</p>";
 			}
 		}
 		//... Sinon on envoie un message d'erreur
 		else {
-			echo "<p>Veuillez remplir correctement tous les champs</p>";
+			echo "<p>Veuillez remplir correctement tous les champs.</p>";
 		}
 	}
 }

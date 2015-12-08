@@ -33,7 +33,7 @@ function connexion(){
 			$ret = User::connecter($login, $psw);
 			if ($ret) {
 				$_SESSION['login'] = $login;
-				echo "Vous êtes connecté";
+				echo "Vous êtes à présent connecté.";
 			}
 			else {
 				echo "<p id='error'>Mot de passe ou login erroné</p>";
