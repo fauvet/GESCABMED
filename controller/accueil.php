@@ -19,7 +19,15 @@ function index($params = null){
 
 
 function connexion(){
-	include VIEW."connexion.php";
+	if (! User::isConnected()){
+		include VIEW."connexion.php";
+		if(isset($_POST['login'])){
+			echo "<p id='mErreur'>Mot de passe ou login erroné</p>";
+		}
+	}
+	else {
+		index();
+	}
 }
 
 
