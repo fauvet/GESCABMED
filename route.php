@@ -71,16 +71,18 @@ class Route {
 		***  INCLUSION DE LA PAGE  ***
 		******************************/
 	public function includeController() {
-
 		//Inclusion du controller correspondant
 		$cont = 'controller/'.$this->controller.'.php';
-		if(file_exists($cont)){ 
+		try {
 			require $cont;
 			//appel de la fonction correspondante
+			if (!function_exists($this->action)) {
+				throw new Exception("Router error", 1);
+			}
 			call_user_func_array($this->action, $this->params);
 		}
-		else { //Page 404
-			echo "Erreur 404";
+		catch(Exception $e) {
+				include VIEW."404.php";
 		}
 	}
 

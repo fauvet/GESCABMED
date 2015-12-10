@@ -70,17 +70,19 @@ select {
 p#mErreur{
 	text-align: center;
 	color: red;
+	margin-left: 35px;
 }
 
 p#mErreur:before {
 	position: absolute;
 	width: 30px;
-	margin-left: -35px;
 	margin-top: -5px;
+	margin-left: -35px;
 	height: 30px;
 	text-align: center;
 	content: "✖";
 	color: white;
+	font-weight: bold;
 	background-color: red;
 	border-radius: 15px;
 }
@@ -88,18 +90,19 @@ p#mErreur:before {
 p#messageOK {
 	text-align: center;
 	color: green;
+	margin-left: 35px;
 }
 
 p#messageOK:before {
 	position: absolute;
-	content: "✔";
 	width: 30px;
-	margin-left: -35px;
 	margin-top: -5px;
+	margin-left: -35px;
 	height: 30px;
 	text-align: center;
-	content: "✖";
+	content: "✔";
 	color: white;
+	font-weight: bold;
 	background-color: green;
 	border-radius: 15px;
 }

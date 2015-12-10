@@ -46,7 +46,7 @@ $r->refreshConnection();
 	</head>
 
 	<body>
-		<!-- HEADER DU HAUT-->
+		<!-- HEADER DU HAUT -->
 		<?php
 			$r->includeHeader();
 		?>

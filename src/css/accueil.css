@@ -110,7 +110,7 @@
 }
 
 .ongletAccueil > li:first-child {
-	background-color: rgba(25, 25, 119, 0.9);
+	background-color: rgba(134, 13, 13, 0.9);
 	color: white;
 	padding-left: 10px;
 	font-weight: bold;
@@ -118,7 +118,7 @@
 }
 
 .ongletAccueil > li:first-child:hover{
-	background-color: rgba(25, 25, 119, 1);
+	background-color: #C91212;
 }
 
 .ongletAccueil a:last-child > li {
@@ -128,5 +128,5 @@
 .ongletAccueil li:hover {
 	transition: 0.5s;
 	color: white;
-	background-color: #32F;
+	background-color: #E01A1A;
 }
