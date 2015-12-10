@@ -22,6 +22,9 @@ require_once 'autoloader.php';
 //On instancie le routeur
 $r = Route::getInstance();
 
+//Si l'utilisateur vient de se connecter ou de se déconnecter on rafraichi l'état de connexion
+$r->refreshConnection();
+
 ?>
 <!DOCTYPE HTML>
 
@@ -44,48 +47,24 @@ $r = Route::getInstance();
 
 	<body>
 		<!-- HEADER DU HAUT-->
-		<header>
-			<div id='connecBox'>
-				<?php
-				if(User::isConnected()){
-					echo "<span data-action='deconnecter'>".$_SESSION['login']."<span>";
-				}
-				else {
-					echo "<span data-action='connexion'><a href='/gescabmed/accueil/connexion'>Connexion</a></span>";
-				}
-				?>
-
-			</div>
-			<div id='Honglets'>
-				<a href=<?php
-					echo WEBROOT;
-				?>
-					><section>Accueil</section></a>
-				<section>Patients
-				<ul class='Hmenus'>
-					<a href=<?php echo WEBROOT.'patient/ajouter'; ?>>     <li>Ajouter</li></a>
-					<a href=<?php echo WEBROOT.'patient/lister'; ?>>      <li>Lister</li></a>
-					<a href=<?php echo WEBROOT.'patient/statistiques'; ?>><li>Statistiques</li></a>
-				</ul></section>
-				<section>Médecins
-				<ul class='Hmenus'>
-					<a href=<?php echo "'".WEBROOT.'medecin/ajouter'."'"; ?>><li>Ajouter</li></a>
-					<a href=<?php echo "'".WEBROOT.'medecin/lister'."'"; ?> ><li>Lister</li></a>
-				</ul></section>
-				<section>Consultations
-				<ul class='Hmenus'>
-					<a href=<?php echo "'".WEBROOT.'consultation/index'."'"; ?>    ><li>Créer</li></a>
-					<a href=<?php echo "'".WEBROOT.'consultation/afficher'."'"; ?> ><li>Planning</li></a>
-				</ul>
-				</section>
-			</div>
-		</header>
+		<?php
+			$r->includeHeader();
+		?>
 
 
 		<!-- CONTENU DE LA PAGE -->
 		<div id='contenu'>
 			<?php
+			if (User::isConnected()) {
 				$r->includeController();
+			}
+			else {
+				// On redirrige tout vers la page de connexion si l'utilisateur n'est aps connecté
+				$r->controller = 'accueil';
+				$r->action = 'connexion';
+				$r->params = array();
+				$r->includeController();
+			}
 			?>
 			
 		</div>

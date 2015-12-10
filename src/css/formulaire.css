@@ -3,6 +3,8 @@ form {
 	text-align: center;
 }
 
+/* Attribus globaux des champs de saisie
+*/
 input[type=text], input[type=password], input[type=date] {
 	width: 350px;
 	padding-top: 5px;
@@ -10,28 +12,104 @@ input[type=text], input[type=password], input[type=date] {
 	padding-left: 10px;
 }
 
+/*
+*	Gestion des boutons
+*/
 
-input[type=submit] {
+input[type=submit], input[type=reset], input[type=button] {
 	font-size: 1.3em;
 	margin: 10px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	padding-left: 20px;
 	padding-right: 20px;
+	color : white;
+	border: 1px solid white;
+}
+
+input[type=submit] {
 	background-color : #52A458 ;
 	color : white;
-	border: 1px solid #323232;
+	background-color : #52A458 ;
 }
 
 input[type=submit]:active {
 	border-style: inset;
+	border-color: #73D87A;
 	background-color : #1C6922 ;
 
 }
 
+input[type=reset] {
+	background-color: #CB3125;
+}
+
+input[type=reset]:active {
+	background-color: #49110D;
+	border: 1px inset black;
+}
+
+
+/* Légendes des champs
+*/
 label {
 	display: inline-flex;
 	width: 300px;
 	margin: 10px;
 }
 
+select {
+    width: 365px;
+    height: 30px;
+    padding: 0 10px;
+}
+
+
+/* Messages d'erreurs ou de confirmation
+*/
+p#mErreur{
+	text-align: center;
+	color: red;
+}
+
+p#mErreur:before {
+	position: absolute;
+	width: 30px;
+	margin-left: -35px;
+	margin-top: -5px;
+	height: 30px;
+	text-align: center;
+	content: "✖";
+	color: white;
+	background-color: red;
+	border-radius: 15px;
+}
+
+p#messageOK {
+	text-align: center;
+	color: green;
+}
+
+p#messageOK:before {
+	position: absolute;
+	content: "✔";
+	width: 30px;
+	margin-left: -35px;
+	margin-top: -5px;
+	height: 30px;
+	text-align: center;
+	content: "✖";
+	color: white;
+	background-color: green;
+	border-radius: 15px;
+}
+
+
+/* CHamps de saisie de la page connexion
+*/
+.connexion {
+	margin: 10px 0; 
+	padding: 15px 5px;
+	text-align: center;
+	font-size: 1.3em;
+}

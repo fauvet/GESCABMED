@@ -52,12 +52,10 @@ header {
 
 header #connecBox {
 	width: calc( 10% - 10px );
-	height: calc( 100% - 15px );
+	height: calc( 100% - 40px );
 	background-color: #D55;
-	margin: 0;
-	padding-left: 5px;
-	padding-right: 5px;
-	padding-top: 15px;
+	display: inline-block;
+	padding: 20px 0;
 	overflow: hidden;
 	color: white;
 	text-align: center;

@@ -61,15 +61,15 @@ function ajouter(){
 			$ret = Patient::add($Pcivilite, $Pnom, $Pprenom, $Pdn, $Pln, $Pns, $Padresse, $Pcp, $Pville, $Pmed);
 			//On affiche un message sur la page selon le résultat
 			if ($ret) {
-				echo "<p>Patient(e) enregistré(e)</p>";
+				echo "<p id='messageOK'>Patient(e) enregistré(e)</p>";
 			}
 			else {
-				echo "<p>Erreur : Veuillez contacter votre administrateur.</p>";
+				echo "<p id='mErreur'>Erreur : Veuillez contacter votre administrateur.</p>";
 			}
 		}
 		//... Sinon on envoie un message d'erreur
 		else {
-			echo "<p>Veuillez remplir correctement tous les champs.</p>";
+			echo "<p id='mErreur'>Veuillez remplir correctement tous les champs.</p>";
 		}
 	}
 }
@@ -81,6 +81,18 @@ function profil($id){
 function lister(){
 	//Récupération des données
 	$patients = Patient::selectAll();
+
+	//On récupère le médecin traitant pour chaque patient
+	foreach ($patients as &$p) {
+		//print_r($p['medecin']);
+		if ($p['id_med'] != null) {
+			$p['medecin'] = array();
+			$p['medecin'] = Medecin::selectByID($p['id_med']);
+			print_r($p['medecin']);
+		}
+	}
+	echo "<br>";
+	print_r($patients[0]);
 
 	//Inclusion de la vue (tableau qui contient tout)
 	include VIEW."listerPatient.php";

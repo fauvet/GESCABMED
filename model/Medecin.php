@@ -25,12 +25,14 @@ class Medecin {
 	*/
 	static function exists($id) {
 		//On selectionne le médecin
-		$statement = DataBase::$instance->prepare("SELECT * FROM medecin WHERE id = :id;");
+		$statement = DataBase::$instance->prepare("SELECT * FROM medecin WHERE id = :id ;");
 		$ret = $statement->execute(array(':id' => $id));
-		$medecin = $ret->fetch();
+		if ($ret == true || $ret == false){
+			return false;
+		}
 
 		//On teste les valeurs de retour, et on renvoie la réponse
-		return ($medecin['id'] == $id);
+		return $ret->fetch();
 	}
 
 	/**

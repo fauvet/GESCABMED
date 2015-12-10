@@ -25,9 +25,10 @@ class User {
 	* @param le mot de passe indiqué
 	* @return vrai si la connexion est réussie, faux sinon */
 	static function connecter($login, $mdp){
-		$ret = DataBase::$instance->prepare("SELECT * FROM secretariat WHERE login=':login' AND mdp=':mdp';");
-		$control = $ret->execute(array(	':login' => $login,
-										':mdp'	 => $mdp));
+		$ret = DataBase::$instance->query("SELECT * FROM secretariat WHERE login='".$login."' AND mdp='".$mdp."';");
+		if (!isset($ret) || $ret == array() || ! $ret || $ret == ''){
+			return false;
+		}
 		$res = $ret->fetch();
 		if ($res['login'] == $login) {
 			return true;
@@ -50,7 +51,7 @@ class User {
 	* @return vrai ou faux (simplement)
 	*/
 	static function isConnected(){
-		return isset($_SESSION['login']) && $_SESSION != null;
+		return isset($_SESSION['login']);
 	}
 }
 

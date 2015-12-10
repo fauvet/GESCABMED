@@ -12,9 +12,6 @@
 						</tr>
 <?php
 						foreach ($patients as $patient) {
-							//On récupère le médecin traitant du patient en cours
-							$medecin = Medecin::selectByID($patient['id_med']);
-
 							//On affiche le contenu du tableau
 							echo "\t\t\t\t\t\t<tr>\n";
 							echo "\t\t\t\t\t\t\t<td>".$patient['prenom']."</td>\n";
@@ -23,7 +20,12 @@
 							echo "\t\t\t\t\t\t\t<td>".$patient['date_naissance']."</td>\n";							
 							echo "\t\t\t\t\t\t\t<td>".$patient['lieu_naissance']."</td>\n";
 							echo "\t\t\t\t\t\t\t<td>".$patient['num_secu']."</td>\n";
-							echo "\t\t\t\t\t\t\t<td>".$medecin['prenom']." ".$medecin['nom']."</td>\n";
+
+							//Affichage du médecin traitant
+
+							echo "\t\t\t\t\t\t\t<td>";
+							echo ($patient['id_med'] != null)? $medecin['medecin']['prenom']." ".$medecin['medecin']['nom']: '';
+							echo "</td>\n";
 							echo "\t\t\t\t\t\t</tr>\n";
 						}?>					
 						</tr>

@@ -84,6 +84,39 @@ class Route {
 		}
 	}
 
+		/****************************
+		***  INCLUSION DU HEADER  ***
+		*****************************/
+	public function includeHeader() {
+		if (User::isConnected()) {
+			include VIEW."headerConnecte.php";
+		}
+		else {
+			include VIEW."headerDeconnecte.php";
+		}
+	}
+
+		/****************************
+		***  INCLUSION DU HEADER  ***
+		*****************************/
+	public function refreshConnection(){
+		//S'il y a eu POST (et donc tentative de connexion)
+		if (isset($_POST['login']) && isset($_POST['psw'])){
+			//Définition des logs et mdp
+			$login = htmlspecialchars(trim($_POST['login']));
+			$psw = htmlspecialchars(trim($_POST['psw']));
+
+			//Execution de la fonction du model
+			$ret = User::connecter($login, $psw);
+			if ($ret) {
+				$_SESSION['login'] = $login;
+			}
+		}
+		//S'il n'y a pas eu post et que l'utilisateur tente de se déconnecter
+		if($this->controller == 'accueil' && $this->action == 'deconnexion'){
+			User::deconnecter();
+		}
+	}
 }
 		
 

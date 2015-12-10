@@ -30,6 +30,14 @@ function ajouter(){
 }
 
 function lister(){
+	//S'il y a eu post
+	if (isset($_POST) && $_POST !== array()) {
+		print_r($_POST);
+		foreach ($_POST as $id) {
+			# code...
+		}
+	}
+
 	//On récupère la liste des médecins travaillant au cabinet
 	$medecins = Medecin::selectAll();
 

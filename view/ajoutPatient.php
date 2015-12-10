@@ -27,7 +27,6 @@
 					<input class='ajoutPatient' id='i8' type='text' name='num_secu'       placeholder='1 99 99 99 999 999 99' ><br>
 
 				<label for='selectMedecin'>Médecin traitant :</label>
-					<input  id='hasMedecin' type='checkbox'>
 					<select id='selectMedecin' name='medecin'>
 						<option value='Aucun'>Aucun</option>
 <?php

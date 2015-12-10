@@ -19,30 +19,7 @@ function index($params = null){
 
 
 function connexion(){
-	if (!User::isConnected()) {
-		//Inclusion de la vue
-		include VIEW."connexion.php";
-		
-		//S'il y a eu POST
-		if (isset($_POST['login']) && isset($_POST['psw'])){
-			//Définition des logs et mdp
-			$login = htmlspecialchars(trim($_POST['login']));
-			$psw = htmlspecialchars(trim($_POST['psw']));
-
-			//Execution de la fonction du model
-			$ret = User::connecter($login, $psw);
-			if ($ret) {
-				$_SESSION['login'] = $login;
-				echo "Vous êtes à présent connecté.";
-			}
-			else {
-				echo "<p id='error'>Mot de passe ou login erroné</p>";
-			}
-		}
-	}
-	else {
-		index();
-	}
+	include VIEW."connexion.php";
 }
 
 
@@ -50,7 +27,7 @@ function deconnexion(){
 	//Deconnexion
 	User::deconnecter();
 	//Redirection sur l'index
-	index();
+	connexion();
 }
 
 ?>
