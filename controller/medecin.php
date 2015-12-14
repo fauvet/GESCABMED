@@ -24,7 +24,7 @@ function ajouter(){
 			}
 		}
 		else {
-			echo "<p>Veuillez remplir correctement tous les champs.</p>";
+			echo "<p id='mErreur'>Veuillez remplir correctement tous les champs.</p>";
 		}
 	}
 }
@@ -32,9 +32,15 @@ function ajouter(){
 function lister(){
 	//S'il y a eu post
 	if (isset($_POST) && $_POST !== array()) {
-		print_r($_POST);
-		foreach ($_POST as $id) {
-			# code...
+		foreach ($_POST as $Mid => $key) {
+			$id = substr($Mid, 1);
+			echo $id.' ';
+			if (Medecin::delete($id)){
+				echo "SUPPRESSION EFFECTUEE";
+			}
+			else {
+				echo "c'est cassé";
+			}
 		}
 	}
 

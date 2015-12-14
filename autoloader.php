@@ -20,7 +20,7 @@ function autoLoader($name) {
 	//Sinon c'est un model
 	else{
 		try {
-			require_once "model/".strtolower($name).".php";
+			require_once "model/".ucfirst(strtolower($name)).".php";
 		}
 		catch(Excpetion $e){
 			echo "Model non trouvé\n".$e->message;
