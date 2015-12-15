@@ -9,6 +9,7 @@
 							<th>Lieu de naissance</th>
 							<th>Num de sécu</th>
 							<th>Médecin traitant</th>
+							<th>Supprimer</th>
 						</tr>
 <?php
 						foreach ($patients as $patient) {
@@ -22,10 +23,12 @@
 							echo "\t\t\t\t\t\t\t<td>".$patient['num_secu']."</td>\n";
 
 							//Affichage du médecin traitant
-
 							echo "\t\t\t\t\t\t\t<td>";
-							echo ($patient['id_med'] != null)? $medecin['medecin']['prenom']." ".$medecin['medecin']['nom']: '';
+							echo ($patient['id_med'] != null)? $patient['medecin']['prenom']." ".$patient['medecin']['nom']: '';
 							echo "</td>\n";
+
+							//Checkbox de suppression
+							echo "\t\t\t\t\t\t\t<td><input type='checkbox' name='p".$patient['id']."'></td>\n";
 							echo "\t\t\t\t\t\t</tr>\n";
 						}?>					
 						</tr>

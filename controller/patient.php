@@ -79,21 +79,28 @@ function profil($id){
 }
 
 function lister(){
-	//Récupération des données
-	$patients = Patient::selectAll();
-
-	//On récupère le médecin traitant pour chaque patient
-	foreach ($patients as &$p) {
-		//print_r($p['medecin']);
-		if ($p['id_med'] != null) {
-			$p['medecin'] = array();
-			$p['medecin'] = Medecin::selectByID($p['id_med']);
-			print_r($p['medecin']);
+	//Si il y a eu suppression, on récupère le post
+	if ($_POST !== array()) {
+		foreach ($_POST as $PpID => $value) {
+			$pID = substr($PpID, 1);
+			if(Patient::delete($pID)){
+				echo "<p id='messageOK'>Supprimé<p>";
+			}
+			else {
+				echo "<p id='mErreur'>Erreur interne<p>";
+			}
 		}
 	}
-	echo "<br>";
-	print_r($patients[0]);
 
+	//Récupération des données
+	$patients = Patient::selectAll();
+	//On récupère le médecin traitant pour chaque patient
+	for ($i=0; isset($patients[$i]); $i++) {
+		if ($patients[$i] != null) {
+			$patients[$i]['medecin'] = array();
+			$patients[$i]['medecin'] = Medecin::selectByID($patients[$i]['id_med']);
+		}
+	}
 	//Inclusion de la vue (tableau qui contient tout)
 	include VIEW."listerPatient.php";
 }

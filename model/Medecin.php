@@ -54,13 +54,12 @@ class Medecin {
 	* @param son $ID
 	*/
 	static function delete($id){
-		if (self::exists($id)){
-			$statement = DataBase::$instance->prepare("DELETE FROM medecin WHERE id = :id ;");
-			$ret = $statement->execute(array(':id' => $id));
-			print_r($statement);
-			return $ret;
+		if(!self::exists($id)){
+			return false;
 		}
-		else {return false;}
+		$statement = DataBase::$instance->prepare("DELETE FROM medecin WHERE id = :id ;");
+		$ret = $statement->execute(array(':id' => $id));
+		return $ret;
 	}
 
 

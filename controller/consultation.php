@@ -10,7 +10,7 @@
 DataBase::construct();
 
 class Consultation {
-
+	
 }
 
 ?>

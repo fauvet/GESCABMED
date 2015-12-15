@@ -11,7 +11,7 @@ define('VIEW', "view/");
 define('CONTROLLER', "controller/");
 define('CSS', WEBROOT."src/css/");
 define('JS', WEBROOT."src/js/");
-
+define('IMG', WEBROOT."src/img/");
 //Instanciation de la session
 session_start();
 
@@ -33,6 +33,7 @@ $r->refreshConnection();
 	<head>
 		<meta charset='utf-8'>
 		<meta author='Cédric Eloundou & Guillaume Fauvet'>
+		<link rel="icon" href=<?php echo "'".IMG."site.ico'"; ?> />
 
 		<!-- INCLUSION  DU CSS -->
 		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."global.css'"; ?> >
@@ -70,7 +71,7 @@ $r->refreshConnection();
 		</div>
 		
 		<!--INCLUSION DU JAVASCRIPT-->
-		<script type="text/javascript" src=<?php echo JS."ajoutPatient.js"; ?>></script>
+		<!--script type="text/javascript" src=<?php //echo JS."ajoutPatient.js"; ?>></script-->
 
 	</body>
 

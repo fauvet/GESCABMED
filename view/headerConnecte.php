@@ -1,6 +1,6 @@
 
 		<header>
-			<a href='/gescabmed/accueil/deconnexion'>
+			<a href=<?php echo "'".WEBROOT."accueil/deconnexion'" ?>>
 			<div id='connecBox'>
 				<span data-action='deconnecter'>Déconnexion<span>
 			</div></a>
