@@ -57,7 +57,7 @@
 }
 
 .boxAccueil > #encartPatient{
-    background: url(/gescabmed/src/img/patient.jpg);
+    background: url(/src/img/patient.jpg);
 	background-position:center center;
 	background-repeat: no-repeat;
     background-size: cover;
@@ -66,7 +66,7 @@
 
 
 .boxAccueil > #encartMedecin{
-    background: url(/gescabmed/src/img/medecin.jpg);
+    background: url(/src/img/medecin.jpg);
 	background-position:center center;
 	background-repeat: no-repeat;
     background-size: cover;
@@ -74,7 +74,7 @@
 }
 
 .boxAccueil > #encartRDV{
-    background: url(/gescabmed/src/img/consultation.png);
+    background: url(/src/img/consultation.png);
 	background-position:center center;
 	background-repeat: no-repeat;
     background-size: contain;

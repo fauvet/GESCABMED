@@ -24,9 +24,9 @@ class DataBase {
 
 	//Contructeur de la classe
 	public static function construct(){
-		self::$dsn 	= 'mysql:dbname=gescabmed;host=localhost';
-		self::$user 	= 'root';
-		self::$psw 	= '';
+		self::$dsn 	= 'mysql:dbname=u298100800_gcm;host=mysql.hostinger.fr';
+		self::$user = 'u298100800_root';
+		self::$psw 	= 'azerty';
 
 		try {
 			self::$instance = new PDO(self::$dsn, self::$user, self::$psw);

@@ -72,7 +72,7 @@ class Route {
 		******************************/
 	public function includeController() {
 		//Inclusion du controller correspondant
-		$cont = 'controller/'.$this->controller.'.php';
+		$cont = CONTROLLER.$this->controller.'.php';
 		try {
 			require $cont;
 			//appel de la fonction correspondante
