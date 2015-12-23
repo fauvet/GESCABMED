@@ -7,9 +7,9 @@
 
     "save_before_upload": true,
     "upload_on_save": true,
-    "sync_down_on_open": false,
+    "sync_down_on_open": true,
     "sync_skip_deletes": false,
-    "sync_same_age": true,
+    "sync_same_age": false,
     "confirm_downloads": false,
     "confirm_sync": true,
     "confirm_overwrite_newer": false,

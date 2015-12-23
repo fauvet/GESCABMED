@@ -1,12 +1,13 @@
 			
-			<h1>Enregistrer un nouveau patient</h1>
+			<?php echo "<h1>Profil de ".$patient['prenom']." ".$patient['nom']."</h1>"; ?>
+			<h2>Vous pouvez modifier ici les informations du patient</h2>
 
 			<form action='' method='post'>
 
 				<label>Civilité :</label> 
 				<select name='civilite'>
 					<option value='M'>M</option>
-					<option value='Mme'>Mme</option>
+					<option value='M'>Mme</option>
 				</select><br>
 
 				<label for='i1'>Nom :</label>
@@ -26,12 +27,12 @@
 				<label for='i8'>Numéro de sécurité sociale :</label>
 					<input class='ajoutPatient' id='i8' type='text' name='num_secu' placeholder='1 99 99 99 999 999 99' ><br>
 
-				<label for='selectMedecin'>Médecin référent :</label>
-					<select id='selectMedecin' name='medecin'>
+				<label for='selectMedecin'>Médecin traitant :</label>
+					<select id='selectMedecin' name='patient'>
 						<option value='Aucun'>Aucun</option>
 <?php
-						foreach ($tabMedecin as $medecin) {
-							echo "\t\t\t\t\t\t<option value='".$medecin['id']."' >".$medecin['prenom'].' '.$medecin['nom']."</option>\n";
+						foreach ($tabMedecin as $patient) {
+							echo "\t\t\t\t\t\t<option value='".$patient['id']."' >".$patient['prenom'].' '.$patient['nom']."</option>\n";
 						}
 						?>
 					</select><br>

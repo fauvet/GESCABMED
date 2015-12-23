@@ -1,0 +1,48 @@
+/***************************************************
+*  CSS S'APPLIQUANT AU PLANNING DES CONSULTATIONS  *
+****************************************************/
+
+
+/* Division contenant les boutons suivant et précédant */
+#Nsemaine{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Bouton navigation entre els semaines */
+.boutonSem{
+    margin: 10px 150px;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+/**/
+#calendrier {
+    margin: 0 5%;
+    width: 90%;
+}
+
+table#calendrier tr{
+    height: 150px;
+}
+
+table#calendrier td{
+	width: 90%
+}
+
+/*Tableau des horraires*/
+#CalHead{
+	margin: 0 5%;
+	width: 90%;
+	padding: 0;
+	text-align: center;
+}
+
+#CalHead th{
+	width: 10%;
+}
+
+#CalHead td{
+	width: calc( 90% / 11 );
+}

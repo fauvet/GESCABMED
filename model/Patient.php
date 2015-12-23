@@ -37,9 +37,8 @@
 
 		static function exists($id){
 			//On selectionne le médecin
-			$statement = DataBase::$instance->prepare("SELECT * FROM patient WHERE id = :id;");
-			$ret = $statement->execute(array(':id' => $id));
-			$patient = $ret->fetch();
+			$statement = DataBase::$instance->query("SELECT * FROM patient WHERE id = ".$id.";");
+			$patient = $statement->fetch();
 			return ($patient['id'] == $id);
 			
 		}
@@ -54,8 +53,13 @@
 		}
 
 		static function selectAll(){
-			$ret = DataBase::$instance->query("SELECT * FROM patient;");
+			$ret = DataBase::$instance->query("SELECT * FROM patient ORDER BY date_naissance;");
 			return $ret->fetchAll();
+		}
+
+		static function select($id){
+			$ret = DataBase::$instance->query("SELECT * FROM patient WHERE id = ".$id.";");
+			return $ret->fetch();
 		}
 
 	}

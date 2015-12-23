@@ -10,10 +10,11 @@ function ajouter(){
 	if (isset($_POST['posted'])) {
 
 		//SI tous les champs ont été remplis
-		if ($_POST['nom'] != '' && $_POST['prenom'] != '') {
+		if ($_POST['nom'] != '' && $_POST['prenom'] != '' && $_POST['civilite'] != '') {
 			$nom    = $_POST['nom'];	
 			$prenom = $_POST['prenom'];
-			$ret = Medecin::add($nom, $prenom);
+			$civilite = $_POST['civilite'];
+			$ret = Medecin::add($nom, $prenom, $civilite);
 
 			//On renvoie le résultat à l'écran
 			if ($ret) {

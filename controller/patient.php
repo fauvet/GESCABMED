@@ -10,17 +10,12 @@
 **	88""""""'     ""     Y8    88     88  a8P_____88  88P'    "8a   88     **
 **	88           ,adPPPPP88    88     88  8PP"""""""  88       88   88     **
 **	88           88,    ,88    88,    88  "8b,   ,aa  88       88   88,    **
-**	88           "8bbdP"Y8    "Y888  88    "Ybbd8"'   88       88   "Y888  **
+**	88            "8bbdP"Y8    "Y888  88    "Ybbd8"'   88       88   "Y888  **
 **	                                                                       **
 *****************************************************************************/
 
 
 function index(){
-
-}
-
-
-function supprimer($id){
 
 }
 
@@ -74,13 +69,23 @@ function ajouter(){
 	}
 }
 
-function profil($id){
+function profil($id=null){
 
+	//On teste si on a bien au moins un paramètre et que c'est un nombre
+	if (!($id != null && $id == intval($id))) {
+		unset($_POST);
+		lister();
+		echo "<p id='mErreur'>Aucun patient correspondant<p>";
+	}
+	elseif(Patient::exists($id)){
+		$patient = Patient::select($id);
+	}
+	INCLUDE VIEW."modifierPatient.php";
 }
 
 function lister(){
 	//Si il y a eu suppression, on récupère le post
-	if ($_POST !== array()) {
+	if (isset($_POST) && $_POST !== array()) {
 		foreach ($_POST as $PpID => $value) {
 			$pID = substr($PpID, 1);
 			if(Patient::delete($pID)){

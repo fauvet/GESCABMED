@@ -24,15 +24,10 @@ class Medecin {
 	* @return vrai si l'ID est retrouvé, faux sinon
 	*/
 	static function exists($id) {
-		//On selectionne le médecin
-		$statement = DataBase::$instance->prepare("SELECT * FROM medecin WHERE id = :id ;");
-		$ret = $statement->execute(array(':id' => $id));
-		if ($ret == true || $ret == false){
-			return false;
-		}
-
-		//On teste les valeurs de retour, et on renvoie la réponse
-		return $ret->fetch();
+		$statement = DataBase::$instance->prepare("SELECT * FROM medecin WHERE id = :id;");
+			$ret = $statement->execute(array(':id' => $id));
+			$medecin = $ret->fetch();
+			return ($medecin['id'] == $id);
 	}
 
 	/**
@@ -41,10 +36,11 @@ class Medecin {
 	* @param son $prénom
 	* @return vrai si l'opération s'est bien effectuée, faux sinon
 	*/
-	static function add($nom, $prenom) {
-		$statement = DataBase::$instance->prepare("INSERT INTO medecin(nom, prenom) VALUES (:nom, :prenom);");
-		$ret = $statement->execute(array(	':nom'    => $nom,
-										':prenom' => $prenom));
+	static function add($nom, $prenom, $civilite) {
+		$statement = DataBase::$instance->prepare("INSERT INTO medecin(nom, prenom, civilite) VALUES (:nom, :prenom, :civilite);");
+		$ret = $statement->execute(array(':nom'    => $nom,
+										':prenom' => $prenom,
+										':civilite' =>$civilite));
 		return $ret;
 	}
 
@@ -54,11 +50,12 @@ class Medecin {
 	* @param son $ID
 	*/
 	static function delete($id){
-		if(!self::exists($id)){
-			return false;
+		$statement = Database::$instance->prepare("UPDATE patient SET id_med = NULL WHERE id_med = :id;");
+		$ret = $statement->execute(array(`:id` => $id));
+		if ($ret) {
+			$statement = DataBase::$instance->prepare("DELETE FROM medecin WHERE id = :id ;");
+			$ret = $statement->execute(array(':id' => $id));
 		}
-		$statement = DataBase::$instance->prepare("DELETE FROM medecin WHERE id = :id ;");
-		$ret = $statement->execute(array(':id' => $id));
 		return $ret;
 	}
 
@@ -119,7 +116,7 @@ class Medecin {
 	* @return un array contenant l'ensemble des données relatives aux médecins
 	*/
 	static function selectAll(){
-		$ret = DataBase::$instance->query("SELECT * FROM medecin;");
+		$ret = DataBase::$instance->query("SELECT * FROM medecin ORDER BY nom, prenom, civilite;");
 		return $ret->fetchAll();
 	}
 

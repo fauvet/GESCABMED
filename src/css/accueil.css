@@ -80,6 +80,13 @@
     background-size: contain;
 }
 
+.boxAccueil > #encartStats{
+	background: url(/src/img/stats.jpg);
+	background-position:center center;
+	background-repeat: no-repeat;
+    background-size: contain;
+}
+
 /*
 	Menus selectionnables dans les onglets
 */
@@ -117,10 +124,6 @@
 	text-align: left;
 }
 
-.ongletAccueil > li:first-child:hover{
-	background-color: #C91212;
-}
-
 .ongletAccueil a:last-child > li {
 	border : none;
 }
@@ -129,4 +132,8 @@
 	transition: 0.5s;
 	color: white;
 	background-color: #E01A1A;
+}
+
+.ongletAccueil > li:first-child:hover {
+	background-color: rgba(134, 13, 13, 0.9);
 }

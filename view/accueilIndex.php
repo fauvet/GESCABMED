@@ -9,7 +9,7 @@
 						<li>PATIENTS</li>
 						<a href=<?php echo WEBROOT.'patient/ajouter'; ?> ><li>Nouvel enregistrement</li></a>
 						<a href=<?php echo WEBROOT.'patient/lister'; ?> ><li>Liste des patients</li></a>
-						<a href=<?php echo WEBROOT.'patient/statistiques'; ?> ><li>Statistiques</li></a>
+						<a href=<?php echo WEBROOT.'patient/modifier'; ?> ><li>Modifier un patient</li></a>
 					</ul>
 				</div>
 				<h2>Gestion des patients</h2>
@@ -44,8 +44,23 @@
 					</ul>
 				</div>
 				<h2>Gérer les consultations patients - médecins</h2>
-				<p>Dans cette dernière section vous pouvez créer et plannifier de nouvelles consultations entre médecins et patients. Pour ce faire
+				<p>Vous pouvez ici créer et plannifier de nouvelles consultations entre médecins et patients. Pour ce faire
 					cliquez sur <b>Ajouter une consultation</b>. Si vous souhaitez afficher ou modifier le planning de l'ensemble des rendez-vous,
 					cliquez sur <b>Afficher le planning</b>.
+				</p>
+			</div>
+
+			<div class='boxAccueil' id='stats'>
+				<div class='encart' id='encartStats'>
+					<ul class='ongletAccueil'>
+						<li>STATISTIQUES</li>
+						<a href=<?php echo WEBROOT.'stats/graphe';?>><li>Graphe de répartition</li></a>
+						<a href=<?php echo WEBROOT.'stats/comparateur';?>><li>Comparateur</li></a>
+					</ul>
+				</div>
+				<h2>Affichage des statistiques</h2>
+				<p>Vous pouvez ici voir les statistiques de répartition des patients en fonction de leur âge et de leur sexe. Pour ce faire
+					cliquez sur <b>Graphe de répartition</b>. Si vous souhaitez voir l'ensemble des heures effectués par les médecins, cliquez
+					sur <b>Comparateur</b>.
 				</p>
 			</div>

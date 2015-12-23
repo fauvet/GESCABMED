@@ -6,6 +6,12 @@ table {
 	margin: 20px 15%;
 }
 
+table#afficherPatient {
+	width: 95%;
+	margin-right: 2.5%;
+	margin-left: 2.5%;
+}
+
 th {
 	height: 40px;
 	margin: 0;
@@ -20,22 +26,23 @@ th#th1 {
 	width: 40%;
 }
 
-th#th2{
+th#th2 {
 	width: 40%;
+
 }
 
-th#th3{
+th#th3 {
 	width: 20%;
+}
+
+td.tdcenter {
+	text-align: center;
 }
 
 td {
 	height: 25px;
 	padding: 5px 0;
 	border: 2px solid #FBFBFB;
-}
-
-td:last-child {
-	text-align: center;
 }
 
 tr:hover {

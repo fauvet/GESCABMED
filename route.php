@@ -38,17 +38,25 @@ class Route {
 		**********************/
 	private function __construct(){
 
+		//Si on est en localhost il faut veiller à ne pas prendre le 'GESCABMED' de trop au début de l'url
+		if ($_SERVER['HTTP_HOST'] == 'localhost') {
+			$index = 1;
+		}
+		else{
+			$index = 0;
+		}
 		//On récupère dans un tableau toutes les données passées dans l'URL 
 		$url = explode('/', substr($_SERVER['REQUEST_URI'], 1));
 
 		//On récupère le controller, s'il est null on le met à index.php
-		$this->controller = (($url[0] == '') ? 'accueil' : $url[0]);
+		$this->controller = (($url[$index] == '') ? 'accueil' : $url[$index]);
 
 		//On récupère l'action...
-		if(isset($url[1]) and $url[1] != '') {
-			$this->action = $url[1];
+		$index++;
+		if(isset($url[$index]) and $url[$index] != '') {
+			$this->action = $url[$index];
 			// et les paramètres si définis
-			for ($i = 2; isset($url[$i]) && $url[$i] != ''; $i++) {
+			for ($i = $index++; isset($url[$i]) && $url[$i] != ''; $i++) {
 				$this->params[$i - 2] = $url[$i];
 			}
 		} else {

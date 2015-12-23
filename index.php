@@ -4,8 +4,8 @@
 *********************************************/
 
 //Variables globales d'accès au fichiers
-define('WEBROOT', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
 define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
+define('WEBROOT', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
 define('MODEL', "model/");
 define('VIEW', "view/");
 define('CONTROLLER', "controller/");
@@ -40,6 +40,7 @@ $r->refreshConnection();
 		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."formulaire.css'"; ?> >
 		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."accueil.css'"; ?> >
 		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."tableau.css'"; ?> >
+		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."consultations.css'"; ?> >
 
 
 		<title>Gestion du cabinet médical</title>
