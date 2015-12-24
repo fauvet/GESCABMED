@@ -2,7 +2,7 @@ ACCUEIL
 [ok] Enlever les liens inutiles dues à la modification de l'architecture du site.
 [ok] Modifier les paragraphes de la pages d'accueil dues à la modification de l'architecture du site
 [  ] Réparer le format des images "Consultations" et "Statistiques"
-[  ] Enlever l'icône connexion en haut à ^gauche sur la page d'accueil
+[  ] Enlever l'icône connexion en haut à ^gauche sur la page d'ACCUEIL
 
 PATIENTS - MEDECINS
 [ok] Renommer le sous-menu medecin "Modifier" en "Lister"
@@ -30,3 +30,4 @@ SQL
 
 IDEES AMELIORATIONS (AUCUNE NE DOIVENT ETRE FAITES AVANT D'AVOIR FINIT LES FONCTIONNALITEES ECRITES PLUS HAUT)
 [  ] Permettre l'ordonencement des tableaux en fonction d'une colonne
+[  ] Ajout d'un bouton se souvenir de moi pour ne jamais se déconnecter du site
