@@ -18,21 +18,29 @@
 	class Patient {
 
 		static function add($civilite, $nom, $prenom, $date_naissance, $lieu_naissance, $num_secu, $adresse, $cp, $ville, $id_med){
-			$statement = DataBase::$instance->prepare(
-				"INSERT INTO patient(civilite, nom, prenom, date_naissance, lieu_naissance, num_secu, adresse, cp, ville, id_med)
-				VALUES (:civilite, :nom, :prenom, :date_naissance, :lieu_naissance, :num_secu, :adresse, :cp, :ville, :id_med );" );
+			$ok = true;
+			$ok = $ok && (strlen(str_replace(" ", "", $num_secu)) == 15);
+			$ok = $ok && (strlen($cp) == 5);
+			if ($ok)	{
+				$statement = DataBase::$instance->prepare(
+					"INSERT INTO patient(civilite, nom, prenom, date_naissance, lieu_naissance, num_secu, adresse, cp, ville, id_med)
+					VALUES (:civilite, :nom, :prenom, :date_naissance, :lieu_naissance, :num_secu, :adresse, :cp, :ville, :id_med )
+					WHERE CURDATE() > :date_naissance;" );
 
-			$ret = $statement->execute(array(':civilite'       => $civilite,
-											 ':nom'            => $nom,
-											 ':prenom'         => $prenom,
-											 ':date_naissance' => $date_naissance,
-											 ':lieu_naissance' => $lieu_naissance,
-											 ':num_secu'       => $num_secu,
-											 ':adresse'        => $adresse,
-											 ':cp'             => $cp,
-											 ':ville'          => $ville,
-											 ':id_med'         => $id_med));
-			return $ret;
+				$ret = $statement->execute(array(':civilite'       => $civilite,
+												 ':nom'            => $nom,
+												 ':prenom'         => $prenom,
+												 ':date_naissance' => $date_naissance,
+												 ':lieu_naissance' => $lieu_naissance,
+												 ':num_secu'       => $num_secu,
+												 ':adresse'        => $adresse,
+												 ':cp'             => $cp,
+												 ':ville'          => $ville,
+												 ':id_med'         => $id_med));
+				return $ret;
+			} else {
+				return false;
+			}
 		}
 
 		static function exists($id){

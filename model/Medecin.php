@@ -67,8 +67,8 @@ class Medecin {
 	* @param son $prénom
 	* @return vrai si l'opération s'est correctement effectuée, faux sinon
 	*/
-	static function modify($id, $nom, $prenom){
-		$statement = DataBase::$instance->prepare("UPDATE medecin SET nom=':nom',prenom=':prenom' WHERE id=:id");
+	static function modify($id, $nom, $prenom, $civilite){
+		$statement = DataBase::$instance->prepare("UPDATE medecin SET nom=':nom',prenom=':prenom', civilite=':civilite' WHERE id=:id");
 		$ret = $statement->execute(array(	':nom'    => $nom,
 											':prenom' => $prenom,
 											':id'	  => $id));
