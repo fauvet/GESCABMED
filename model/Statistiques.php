@@ -36,7 +36,11 @@ class Statistiques {
 	}
 
 	static function nbHommeEntre25Et50ans() {
+<<<<<<< HEAD
 		$ret = DataBase::$instance->query("SELECT COUNT(*) FROM patient WHERE civilite='M' AND DATEDIFF(CURDATE(), date_naissance) BETWEEN (365.25 * 25) AND (365.25 * 50)");
+=======
+		$ret = DataBase::$instance->query("SELECT COUNT(*) FROM patient WHERE civilite='M' AND DATEDIFF(CURDATE(), date_naissance) < (365.25 * 25);");
+>>>>>>> 22a924059f185293c85b8f17105fa062bea5ec38
 		if (!$ret) {
 			return false;
 		}
@@ -52,7 +56,11 @@ class Statistiques {
 	}
 
 	static function nbHommePlus50ans() {
+<<<<<<< HEAD
 		$ret = DataBase::$instance->query("SELECT COUNT(*) FROM patient WHERE civilite='M' AND DATEDIFF(CURDATE(), date_naissance) > (365.25 * 50);");
+=======
+		$ret = DataBase::$instance->query("SELECT COUNT(*) FROM patient WHERE civilite='M' AND DATEDIFF(CURDATE(), date_naissance)  BETWEEN (365.25 * 25) AND (365.25 * 50)");
+>>>>>>> 22a924059f185293c85b8f17105fa062bea5ec38
 		if (!$ret) {
 			return false;
 		}

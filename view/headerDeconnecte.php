@@ -1,6 +1,6 @@
 	<header>
 	
-		<a href='/gescabmed/accueil/connexion'>
+		<a href=<?php echo "'".WEBROOT."accueil/connexion'" ?>>
 			<div id='connecBox'>
 				<span data-action='connexion'>Connexion</span>
 			</div>

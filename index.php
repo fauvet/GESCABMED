@@ -4,14 +4,14 @@
 *********************************************/
 
 //Variables globales d'accès au fichiers
-define('WEBROOT', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
 define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
+define('WEBROOT', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
 define('MODEL', "model/");
 define('VIEW', "view/");
 define('CONTROLLER', "controller/");
 define('CSS', WEBROOT."src/css/");
 define('JS', WEBROOT."src/js/");
-
+define('IMG', WEBROOT."src/img/");
 //Instanciation de la session
 session_start();
 
@@ -33,12 +33,14 @@ $r->refreshConnection();
 	<head>
 		<meta charset='utf-8'>
 		<meta author='Cédric Eloundou & Guillaume Fauvet'>
+		<link rel="icon" href=<?php echo "'".IMG."site.ico'"; ?> />
 
 		<!-- INCLUSION  DU CSS -->
 		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."global.css'"; ?> >
 		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."formulaire.css'"; ?> >
 		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."accueil.css'"; ?> >
 		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."tableau.css'"; ?> >
+		<link rel="stylesheet" type="text/css" href=<?php echo "'".CSS."consultations.css'"; ?> >
 
 
 		<title>Gestion du cabinet médical</title>
@@ -70,7 +72,7 @@ $r->refreshConnection();
 		</div>
 		
 		<!--INCLUSION DU JAVASCRIPT-->
-		<script type="text/javascript" src=<?php echo JS."ajoutPatient.js"; ?>></script>
+		<!--script type="text/javascript" src=<?php //echo JS."ajoutPatient.js"; ?>></script-->
 
 	</body>
 

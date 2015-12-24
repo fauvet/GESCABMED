@@ -1,13 +1,14 @@
+
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Lun 14 Décembre 2015 à 11:53
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Client: localhost
+-- Généré le: Mer 23 Décembre 2015 à 11:03
+-- Version du serveur: 10.0.20-MariaDB
+-- Version de PHP: 5.2.17
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `gescabmed`
+-- Base de données: `u298100800_gcm`
 --
 
 -- --------------------------------------------------------
@@ -30,17 +31,24 @@ CREATE TABLE IF NOT EXISTS `medecin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) COLLATE utf8_bin NOT NULL,
   `prenom` varchar(50) COLLATE utf8_bin NOT NULL,
+  `civilite` varchar(3) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=10 ;
 
 --
 -- Contenu de la table `medecin`
 --
 
-INSERT INTO `medecin` (`id`, `nom`, `prenom`) VALUES
-(1, 'Grey', 'Meredith'),
-(2, 'Derek', 'Mamour'),
-(3, 'House', 'Docteur');
+INSERT INTO `medecin` (`id`, `nom`, `prenom`, `civilite`) VALUES
+(1, 'Grey', 'Meredith', 'M'),
+(2, 'Derek', 'Mamour', 'M'),
+(3, 'House', 'Docteur', 'M'),
+(4, 'Courreau', 'Salomé', 'Mme'),
+(5, 'Crusty', 'Victor', 'M'),
+(6, 'Gramme', 'Anna', 'Mme'),
+(7, 'Lunel', 'Jordan', 'M'),
+(8, 'Lunel', 'Alex', 'M'),
+(9, 'Dupont', 'Cécile', 'Mme');
 
 -- --------------------------------------------------------
 
@@ -62,15 +70,22 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `id_med` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_med` (`id_med`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=10 ;
 
 --
 -- Contenu de la table `patient`
 --
 
 INSERT INTO `patient` (`id`, `civilite`, `nom`, `prenom`, `date_naissance`, `lieu_naissance`, `num_secu`, `adresse`, `cp`, `ville`, `id_med`) VALUES
-(1, 'M', 'Eloundou', 'Cedric', '1996-06-13', 'Rochefort (17)', '1 99 99 99 999 999 99', '48 rue du Cagire', '31100', 'Toulouse', NULL),
-(5, 'M', 'Fauvex', 'Jean Kevin', '1999-10-25', 'Paris (75)', '1 90 56 49 999 234 91', '58 rue du colonel Moutarde', '31100', 'Toulouse', 1);
+(1, 'Mme', 'Canelo', 'Sophie', '1996-06-13', 'Rochefort', '1 94 05 05 323 780 34', '48 rue du Cagire', '13000', 'Marseilles', NULL),
+(4, 'M', 'Montosac', 'Jules', '1999-10-25', 'Paris', '1 90 56 49 984 234 91', '58 rue du colonel Moutarde', '31100', 'Toulouse', 1),
+(5, 'Mme', 'Prigent', 'Anne-Marie', '2017-01-30', 'Toulouse', '1 84 95 87 072 056 76', 'Toulouse', '31000', 'Toulouse', 2),
+(3, 'Mme', 'Sterlin', 'Germaine', '1955-06-18', 'Nantes', '1 33 88 12 932 929 93', '56 Avenue les moulineaux', '44780', 'Nantes', 7),
+(2, 'M', 'Malau', 'Théo', '1980-01-28', 'Toulouse', '1 98 38 65 389 032 77', '23 bis Rue des faucons', '31978', 'Toulouse', 0),
+(6, 'M', 'Piau', 'Lionel', '1973-11-10', 'Paris', '1 92 49 87 830 273 67', '3 Chemin de la noisette', '31857', 'Toulouse', 1),
+(7, 'Mme', 'Grand', 'Lisa', '1996-05-12', 'Toulouse', '1 98 38 27 882 743 92', '22 Rue des policiers', '31600', 'Toulouse', 4),
+(8, 'M', 'Darmon', 'Serge', '1961-12-31', 'Perpignan', '1 92 49 86 276 876 29', 'Les fromagères', '66780', 'Perpignan', NULL),
+(9, 'Mme', 'Chabère', 'Loana', '2003-09-16', 'Toulouse', '1 93 72 59 278 782 93', 'Les Bojolais', '31300', 'Toulouse', NULL);
 
 -- --------------------------------------------------------
 
@@ -88,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `rdv` (
   PRIMARY KEY (`id`),
   KEY `id_patient` (`id_patient`),
   KEY `id_medecin` (`id_medecin`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -100,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `secretariat` (
   `login` varchar(20) COLLATE utf8_bin NOT NULL,
   `mdp` varchar(32) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`login`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Contenu de la table `secretariat`
@@ -109,23 +124,6 @@ CREATE TABLE IF NOT EXISTS `secretariat` (
 INSERT INTO `secretariat` (`login`, `mdp`) VALUES
 ('user1', 'pass'),
 ('user2', 'pass');
-
---
--- Contraintes pour les tables exportées
---
-
---
--- Contraintes pour la table `patient`
---
-ALTER TABLE `patient`
-  ADD CONSTRAINT `fk_pateint_id_medecin` FOREIGN KEY (`id_med`) REFERENCES `medecin` (`id`);
-
---
--- Contraintes pour la table `rdv`
---
-ALTER TABLE `rdv`
-  ADD CONSTRAINT `fk_rdv_id_medecin` FOREIGN KEY (`id_medecin`) REFERENCES `medecin` (`id`),
-  ADD CONSTRAINT `fk_rdv_id_patient` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

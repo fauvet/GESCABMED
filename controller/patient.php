@@ -10,17 +10,12 @@
 **	88""""""'     ""     Y8    88     88  a8P_____88  88P'    "8a   88     **
 **	88           ,adPPPPP88    88     88  8PP"""""""  88       88   88     **
 **	88           88,    ,88    88,    88  "8b,   ,aa  88       88   88,    **
-**	88           "8bbdP"Y8    "Y888  88    "Ybbd8"'   88       88   "Y888  **
+**	88            "8bbdP"Y8    "Y888  88    "Ybbd8"'   88       88   "Y888  **
 **	                                                                       **
 *****************************************************************************/
 
 
 function index(){
-
-}
-
-
-function supprimer($id){
 
 }
 
@@ -74,26 +69,43 @@ function ajouter(){
 	}
 }
 
-function profil($id){
+function profil($id=null){
 
+	//On teste si on a bien au moins un paramètre et que c'est un nombre
+	if (!($id != null && $id == intval($id))) {
+		unset($_POST);
+		lister();
+		echo "<p id='mErreur'>Aucun patient correspondant<p>";
+	}
+	elseif(Patient::exists($id)){
+		$patient = Patient::select($id);
+	}
+	INCLUDE VIEW."modifierPatient.php";
 }
 
 function lister(){
-	//Récupération des données
-	$patients = Patient::selectAll();
-
-	//On récupère le médecin traitant pour chaque patient
-	foreach ($patients as &$p) {
-		//print_r($p['medecin']);
-		if ($p['id_med'] != null) {
-			$p['medecin'] = array();
-			$p['medecin'] = Medecin::selectByID($p['id_med']);
-			print_r($p['medecin']);
+	//Si il y a eu suppression, on récupère le post
+	if (isset($_POST) && $_POST !== array()) {
+		foreach ($_POST as $PpID => $value) {
+			$pID = substr($PpID, 1);
+			if(Patient::delete($pID)){
+				echo "<p id='messageOK'>Supprimé<p>";
+			}
+			else {
+				echo "<p id='mErreur'>Erreur interne<p>";
+			}
 		}
 	}
-	echo "<br>";
-	print_r($patients[0]);
 
+	//Récupération des données
+	$patients = Patient::selectAll();
+	//On récupère le médecin traitant pour chaque patient
+	for ($i=0; isset($patients[$i]); $i++) {
+		if ($patients[$i] != null) {
+			$patients[$i]['medecin'] = array();
+			$patients[$i]['medecin'] = Medecin::selectByID($patients[$i]['id_med']);
+		}
+	}
 	//Inclusion de la vue (tableau qui contient tout)
 	include VIEW."listerPatient.php";
 }

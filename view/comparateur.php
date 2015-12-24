@@ -14,4 +14,8 @@
 							}
 						?>
 					</table>
+<<<<<<< HEAD
+=======
+					<input type='submit' value='Supprimer'>
+>>>>>>> 22a924059f185293c85b8f17105fa062bea5ec38
 				</form>

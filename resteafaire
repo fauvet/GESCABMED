@@ -2,6 +2,7 @@ ACCUEIL
 [ok] Enlever les liens inutiles dues à la modification de l'architecture du site.
 [ok] Modifier les paragraphes de la pages d'accueil dues à la modification de l'architecture du site
 [  ] Réparer le format des images "Consultations" et "Statistiques"
+[  ] Enlever l'icône connexion en haut à ^gauche sur la page d'accueil
 
 PATIENTS - MEDECINS
 [ok] Renommer le sous-menu medecin "Modifier" en "Lister"

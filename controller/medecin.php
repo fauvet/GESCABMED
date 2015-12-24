@@ -10,17 +10,18 @@ function ajouter(){
 	if (isset($_POST['posted'])) {
 
 		//SI tous les champs ont été remplis
-		if ($_POST['nom'] != '' && $_POST['prenom'] != '') {
+		if ($_POST['nom'] != '' && $_POST['prenom'] != '' && $_POST['civilite'] != '') {
 			$nom    = $_POST['nom'];	
 			$prenom = $_POST['prenom'];
-			$ret = Medecin::add($nom, $prenom);
+			$civilite = $_POST['civilite'];
+			$ret = Medecin::add($nom, $prenom, $civilite);
 
 			//On renvoie le résultat à l'écran
 			if ($ret) {
-				echo "Médecin enregistré(e)";
+				echo "<p id='messageOK'>Médecin enregistré(e)</p>";
 			}
 			else {
-				echo "Erreur : Veuillez contacter votre administrateur.";
+				echo "<p id='mErreur'>Erreur : Veuillez contacter votre administrateur.</p>";
 			}
 		}
 		else {
@@ -32,15 +33,10 @@ function ajouter(){
 function lister(){
 	//S'il y a eu post
 	if (isset($_POST) && $_POST !== array()) {
+		$retour = true;
 		foreach ($_POST as $Mid => $key) {
 			$id = substr($Mid, 1);
-			echo $id.' ';
-			if (Medecin::delete($id)){
-				echo "SUPPRESSION EFFECTUEE";
-			}
-			else {
-				echo "c'est cassé";
-			}
+			$retour = Medecin::delete($id) && $retour;
 		}
 	}
 
@@ -49,6 +45,16 @@ function lister(){
 
 	//On inclu la vue
 	include VIEW."listerMedecin.php";
+
+	//On affiche le message de confirmation s'il y a eu suppression
+	if (isset($retour)){
+		if($retour){
+		echo "<p id='messageOK'>Supprimé(s)<p>";
+		}
+		else {
+			echo "<p id='mErreur'>Erreur interne<p>";
+		}
+	}
 }
 
 ?>

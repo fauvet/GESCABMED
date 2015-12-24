@@ -24,15 +24,25 @@ class DataBase {
 
 	//Contructeur de la classe
 	public static function construct(){
-		self::$dsn 	= 'mysql:dbname=u298100800_gcm;host=mysql.hostinger.fr';
-		self::$user = 'u298100800_root';
-		self::$psw 	= 'azerty';
+		//Si on est en localhost ...
+		if ($_SERVER['HTTP_HOST'] == 'localhost') {
+			self::$dsn 	= 'mysql:dbname=gescabmed;host=localhost;charset=UTF8';
+			self::$user = 'root';
+			self::$psw 	= '';
+		}
+		//Si on est sur hostinger (gescabmed.esy.es)
+		else{
+			self::$dsn 	= 'mysql:dbname=u298100800_gcm;host=mysql.hostinger.fr';
+			self::$user = 'u298100800_root';
+			self::$psw 	= 'azerty';
+		}
 
+		//On lance la connexion (objet PDO)
 		try {
 			self::$instance = new PDO(self::$dsn, self::$user, self::$psw);
 		}
-		catch (PDOExecption $e){
-			echo "Erreur connexion self".$e->message;
+		catch (Execption $e){
+			echo "Erreur connexion PDO".$e->message;
 		}
 	}
 }
