@@ -1,0 +1,50 @@
+                                                          
+  ,ad8888ba,   		88888888ba,    	  ,ad8888ba,   			88888888888  
+ d8"'    `"8b  		88      `"8b   	 d8"'    `"8b  			88           
+d8'            		88        `8b  	d8'            			88           
+88             		88         88  	88             			88aaaaa      
+88             		88         88  	88             			88"""""      
+Y8,            		88         8P  	Y8,            			88           
+ Y8a.    .a8P  		88      .a8P   	 Y8a.    .a8P  			88           
+  `"Y8888Y"' ahier	88888888Y"' es     `"Y8888Y"' harges 	88 onctionnelles           
+                                                          
+
+Pour se connecter à la base de données :
+ - http://sql2.hostinger.fr/phpmyadmin/index.php?db=u298100800_gcm&table=patient&target=tbl_select.php&token=37bf671421d55800038abf3540e677b9
+ - u298100800_root
+ - azerty
+
+
+Informations :
+	<> usagers du centre (avec leurs civilités, leurs noms et prénoms, leurs adresses complètes, leurs dates et lieux de naissance, et leurs numéros de sécurité sociale)
+	<> médecins (avec leurs civilités, noms, et prénoms)
+
+Consignes :
+	<> Chaque usager pourra avoir un médecin référent parmi ceux du centre.
+	<> Le secrétariat devra pouvoir saisir les rendez-vous en choisissant l'usager et le médecin dans des listes et en saisissant la date, l'heure, et la durée de la consultation (30 min par défaut).
+	<> Créer les pages nécessaires à l'affichage, l'ajout, la modification, et la suppression des usagers. Réutiliser ces pages en modifiant les formulaires et les requêtes pour mettre en oeuvre la gestion des médecins.
+	<> Créer les pages nécessaires à l'affichage et à la saisie des consultations. Vous pourrez utiliser un tableau trié par ordre chronologique descendant pour l'affichage (les plus anciennes consultations en fin de tableau). Lors de la saisie, si un médecin référent est associé à un usager, celui-ci devra être proposé par défaut.
+	<> Créer une page affichant les statistiques suivantes :
+		o Un tableau à double entrée affichant la répartition des usagers selon leur sexe et leur âge (moins de 25 ans, entre 25 et 50 ans, plus de 50 ans) :
+				/--------------------------------------------\
+		  		| Tranche d'âge      | Nb Hommes | Nb Femmes |
+		  		|--------------------------------------------|
+		  		| Moins de 25 ans    |           |           |
+		  		|--------------------------------------------|
+		  		| Entre 25 et 50 ans |	 	 	 |           |
+		  		|--------------------------------------------|
+		  		| Plus de 50 ans     |		     |           |
+		  		\--------------------------------------------/
+
+		o La durée totale des consultations effectuées par chaque médecin (en nombre d'heures).
+	<> Sécuriser l'application en créant une page d'authentification (à l'aide d'un nom d'utilisateur et d'un mot de passe définis à l'avance). Aucune autre page de l'application ne devra être accessible si l'utilisateur n'est pas authentifié.
+	<> Mettre en place un menu global proposant 4 items ("Usagers", "Médecins", "Consultations", et "Statistiques") qui sera affiché sur chaque page pour permettre à l'utilisateur de naviguer dans l'application. Ajouter tous les liens nécessaires entre les différentes pages.
+	<>Reprendre les pages de gestion des consultations et ajouter :
+		o La modification et la suppression des consultations.
+		o Un contrôle de non-chevauchement des consultations pour un même médecin.
+		o La possibilité de filtrer la liste des consultations par médecin au moyen d'un menu déroulant.
+
+
+															INSTRUCTION POUR RENDRE LE PROJET
+	- Vous devez déposer une archive (c'est-à-dire un fichier zip) contenant l'intégralité de votre code source avant le dimanche 03 janvier à 23h55, à l'aide du devoir ci-dessous. Le nom de ce fichier doit comprendre les 2 noms constituant votre binôme, ainsi que la lettre du groupe du binôme ; un nom de fichier valide est par exemple “Dupont_Durand_A.zip".
+	- Votre site doit être disponible sur r-info-nacre ou sur tout autre serveur de votre choix accessible en ligne. A la racine de votre archive, vous devez donc créer un fichier nommé “acces_site.txt” contenant l’URL de votre site ainsi que toute autre information qui pourrait être nécessaire à l’utilisation de celui-ci (par exemple, des informations d’authentification).

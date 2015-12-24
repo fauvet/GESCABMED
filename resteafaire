@@ -1,0 +1,33 @@
+ACCUEIL
+[ok] Enlever les liens inutiles dues à la modification de l'architecture du site.
+[ok] Modifier les paragraphes de la pages d'accueil dues à la modification de l'architecture du site
+[  ] Réparer le format des images "Consultations" et "Statistiques"
+[  ] Enlever l'icône connexion en haut à ^gauche sur la page d'ACCUEIL
+
+PATIENTS - MEDECINS
+[ok] Renommer le sous-menu medecin "Modifier" en "Lister"
+[  ] Permettre l'accès aux profils depuis le sous menu "Lister" en cliquant sur l'utilisateur
+[  ] Appliquer la modification du profil
+[ok] Centrer les boxs de selection pour suppression
+
+STATISTIQUES
+[  ] Ajouter un jeu d'essai de consultation suffisant pour vérifier si la page fonctionne bien
+[ok] Réparer l'erreur affiché
+[  ] Eventuellement prendre en compte le fait que la somme des heures est faite pour les heures déjà faite et non à venir ??? Interprétation
+[ok] Suppression du bouton supprimer depuis le sous-menu "Comparateur"
+
+CONSULTATION
+[ok] Réparer les erreurs affichées empêchant l'affichage des pages
+[  ] Rendre la rubrique fonctionnelle
+
+SQL
+[  ] Faire de la protection (ex :
+	- ne pas ajouter un patient ayant une date de naissance supérieur à la date
+	- faire en sorte que le numéro de sécu ne contiennent que des chiffres voir des espaces, faire attention à la taille que cela prend sans les espaces
+	- ...)
+ 
+
+
+IDEES AMELIORATIONS (AUCUNE NE DOIVENT ETRE FAITES AVANT D'AVOIR FINIT LES FONCTIONNALITEES ECRITES PLUS HAUT)
+[  ] Permettre l'ordonencement des tableaux en fonction d'une colonne
+[  ] Ajout d'un bouton se souvenir de moi pour ne jamais se déconnecter du site
