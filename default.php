@@ -183,7 +183,7 @@ $dirs = @array_values($dirs); $files = @array_values($files);
 <html>
     <head>
         <title>Bienvenue sur <? print $host; ?>! Hostinger - Hébergement gratuit avec PHP et MySQL.</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+       	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="http://www.main-hosting.com/hostinger/welcome/css/site.css" media="screen" rel="stylesheet" type="text/css" />
     </head>
     <body>
