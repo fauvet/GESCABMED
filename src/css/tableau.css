@@ -48,3 +48,12 @@ td {
 tr:hover {
 	background-color: #E8E8E8;
 }
+
+
+.profilLink{
+	position: absolute;
+	width: calc( 100% - 18% );
+	height: 33px;
+	margin-top: -5px;
+	margin-left: -15px;
+}

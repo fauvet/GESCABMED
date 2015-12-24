@@ -38,6 +38,7 @@
 		static function exists($id){
 			//On selectionne le médecin
 			$statement = DataBase::$instance->query("SELECT * FROM patient WHERE id = ".$id.";");
+			echo $statement;
 			$patient = $statement->fetch();
 			return ($patient['id'] == $id);
 			
@@ -53,7 +54,7 @@
 		}
 
 		static function selectAll(){
-			$ret = DataBase::$instance->query("SELECT * FROM patient ORDER BY date_naissance;");
+			$ret = DataBase::$instance->query("SELECT * FROM patient ORDER BY nom;");
 			return $ret->fetchAll();
 		}
 

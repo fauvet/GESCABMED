@@ -4,9 +4,9 @@
 				<form action='' method='POST'>
 					<table id='afficherPatient'>
 						<tr>
+							<th>Civilité</th>
 							<th>Nom</th>
 							<th>Prénom</th>
-							<th>Civilité</th>
 							<th>Adresse complète</th>
 							<th>Date de naissance</th>
 							<th>Lieu de naissance</th>
@@ -17,10 +17,10 @@
 <?php
 						foreach ($patients as $patient) {
 							//On affiche le contenu du tableau
-							echo "\t\t\t\t\t\t<tr><a class='profilLink' href='/patient/profil/".$patient['id']."'>LINK</a>\n";
+							echo "\t\t\t\t\t\t<tr>\n";
+							echo "\t\t\t\t\t\t\t<td class='tdcenter'><a class='profilLink' href='".WEBROOT."patient/profil/".$patient['id']."'></a>".$patient['civilite']."</td>\n";
 							echo "\t\t\t\t\t\t\t<td class='tdcenter'>".$patient['nom']."</td>\n";
 							echo "\t\t\t\t\t\t\t<td class='tdcenter'>".$patient['prenom']."</td>\n";
-							echo "\t\t\t\t\t\t\t<td class='tdcenter'>".$patient['civilite']."</td>\n";
 							echo "\t\t\t\t\t\t\t<td class='tdcenter'>".$patient['adresse'].", ".$patient['cp']." ".$patient['ville']."</td>\n";
 							echo "\t\t\t\t\t\t\t<td class='tdcenter'>".$patient['date_naissance']."</td>\n";							
 							echo "\t\t\t\t\t\t\t<td class='tdcenter'>".$patient['lieu_naissance']."</td>\n";

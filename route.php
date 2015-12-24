@@ -108,9 +108,9 @@ class Route {
 		}
 	}
 
-		/****************************
-		***  INCLUSION DU HEADER  ***
-		*****************************/
+		/*****************************************
+		***  REACTUALISER L'ETAT DE CONNEXION  ***
+		******************************************/
 	public function refreshConnection(){
 		//S'il y a eu POST (et donc tentative de connexion)
 		if (isset($_POST['login']) && isset($_POST['psw'])){
