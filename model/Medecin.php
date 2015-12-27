@@ -24,10 +24,9 @@ class Medecin {
 	* @return vrai si l'ID est retrouvé, faux sinon
 	*/
 	static function exists($id) {
-		$statement = DataBase::$instance->prepare("SELECT * FROM medecin WHERE id = :id;");
-			$ret = $statement->execute(array(':id' => $id));
-			$medecin = $ret->fetch();
-			return ($medecin['id'] == $id);
+		$ret = DataBase::$instance->query("SELECT * FROM medecin WHERE id =".$id.";");
+		$medecin = $ret->fetch();
+		return ($medecin['id'] == $id);
 	}
 
 	/**
@@ -129,11 +128,28 @@ class Medecin {
 		//Si aucun ID est renseigné on renvoie faux
 		if(!isset($id) || $id == '')
 			return false;
-		$ret = DataBase::$instance->query("SELECT nom, prenom FROM medecin WHERE id=".$id.";");
+		$ret = DataBase::$instance->query("SELECT * FROM medecin WHERE id=".$id.";");
 		//Si aucun résultat n'est retrouvé on renvoie faux
 		if(!isset($ret) || $ret == array())
 			return false;
 		return $ret->fetch();
+	}
+
+	/**
+	* Met à jour les informations du médecin correspondant dans la base de données 
+	* @param ID du médecin que l'on modifie
+	* @param nom que l'on lui attribu de nouveau
+	* @param prenom que l'on lui attribu de nouveau
+	* @param civilité que l'on lui attribu de nouveau
+	* @return vrai si la modification s'est bien effectuée, false sinon
+	*/
+	static function update($id, $nom, $prenom, $civilite){
+		$statement = DataBase::$instance->prepare("UPDATE medecin SET nom= :nom ,prenom= :prenom , civilite= :civ WHERE id = :id ;");
+		$ret = $statement->execute(array(':id'     => $id,
+			                             ':nom'    => $nom,
+			                             ':prenom' => $prenom,
+			                             ':civ'    => $civilite));
+		return $ret;
 	}
 }
 

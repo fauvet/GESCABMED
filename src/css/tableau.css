@@ -57,3 +57,8 @@ tr:hover {
 	margin-top: -5px;
 	margin-left: -15px;
 }
+
+.tdcenter .profilLink{
+	width: calc( 100% - 30% - 20% );
+	left: 18%;
+}

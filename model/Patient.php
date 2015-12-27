@@ -38,7 +38,6 @@
 		static function exists($id){
 			//On selectionne le médecin
 			$statement = DataBase::$instance->query("SELECT * FROM patient WHERE id = ".$id.";");
-			echo $statement;
 			$patient = $statement->fetch();
 			return ($patient['id'] == $id);
 			
@@ -61,6 +60,22 @@
 		static function select($id){
 			$ret = DataBase::$instance->query("SELECT * FROM patient WHERE id = ".$id.";");
 			return $ret->fetch();
+		}
+
+		static function update($id, $civilite, $nom, $prenom, $date_naissance, $lieu_naissance, $num_secu, $adresse, $cp, $ville, $id_med){
+			$statement = DataBase::$instance->prepare("UPDATE patient SET civilite = :civ ,nom = :nom ,prenom = :prenom ,date_naissance = :dn ,lieu_naissance = :ln ,"
+				."num_secu = :ns ,adresse = :adr ,cp = :cp ,ville = :ville WHERE id = :id ;");
+			$ret = $statement->execute(array(':civ' => $civilite,
+			                                 ':nom' => $nom ,
+			                                 ':prenom' => $prenom,
+			                                 ':dn' => $date_naissance,
+			                                 ':ln' => $lieu_naissance,
+			                                 ':ns' => $num_secu,
+			                                 ':adr' => $adresse,
+			                                 ':cp' => $cp,
+			                                 ':ville' => $ville,
+			                                 ':id' => $id));
+			return $ret;
 		}
 
 	}

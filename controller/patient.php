@@ -71,16 +71,41 @@ function ajouter(){
 
 function profil($id=null){
 
-	//On teste si on a bien au moins un paramètre et que c'est un nombre
-	if (!($id != null && $id == intval($id))) {
-		unset($_POST);
+	//On teste si on a bien au moins un paramètre et que c'est un nombre, puis que le patient existe
+	if(($id != null && $id == intval($id)) && Patient::exists($id)){
+		//Traitement associé au post
+		if(isset($_POST['posted'])){
+			$Pcivilite = $_POST['civilite'];
+			$Pnom      = $_POST['nom'];
+			$Pprenom   = $_POST['prenom'];
+			$Pdn       = $_POST['date_naissance'];
+			$Pln       = $_POST['lieu_naissance'];
+			$Pns       = $_POST['num_secu'];
+			$Padresse  = $_POST['adresse'];
+			$Pcp       = $_POST['cp'];
+			$Pville    = $_POST['ville'];
+			$Pid_med   = $_POST['medecin'];
+			$retour = Patient::update($id, $Pcivilite, $Pnom, $Pprenom, $Pdn, $Pln, $Pns, $Padresse, $Pcp, $Pville, $Pid_med);
+		}
+		$patient = Patient::select($id);
+		//On récupère le médecin référent
+		$medRef = Medecin::selectByID($patient['id_med']);
+		//On récupère la liste des médecins pour le selecteur
+		$tabMedecin = Medecin::selectAll();
+		INCLUDE VIEW."modifierPatient.php";
+		if (isset($retour) && $retour) {
+			echo "<p id='messageOK'>Modifications effetuées</p>";
+		}
+		elseif(isset($retour)){
+				echo "<p id='mErreur'>Erreur : Veuillez contacter votre administrateur.</p>";
+		}
+	}
+	//Si le patient n'existe pas
+	else {
+		unset($_POST); //Supprimer le post pour éviter les conflits avec l'autre page
 		lister();
 		echo "<p id='mErreur'>Aucun patient correspondant<p>";
 	}
-	elseif(Patient::exists($id)){
-		$patient = Patient::select($id);
-	}
-	INCLUDE VIEW."modifierPatient.php";
 }
 
 function lister(){
@@ -89,10 +114,11 @@ function lister(){
 		foreach ($_POST as $PpID => $value) {
 			$pID = substr($PpID, 1);
 			if(Patient::delete($pID)){
-				echo "<p id='messageOK'>Supprimé<p>";
+				echo "<p id='messageOK'>Supprimé<p><br>";
 			}
 			else {
 				echo "<p id='mErreur'>Erreur interne<p>";
+				break;
 			}
 		}
 	}

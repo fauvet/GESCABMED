@@ -57,7 +57,7 @@
 }
 
 .boxAccueil > #encartPatient{
-    background: url(/src/img/patient.jpg);
+    background: url(/gescabmed/src/img/patient.jpg);
 	background-position:center center;
 	background-repeat: no-repeat;
     background-size: cover;
@@ -66,7 +66,7 @@
 
 
 .boxAccueil > #encartMedecin{
-    background: url(/src/img/medecin.jpg);
+    background: url(/gescabmed/src/img/medecin.jpg);
 	background-position:center center;
 	background-repeat: no-repeat;
     background-size: cover;
@@ -74,17 +74,17 @@
 }
 
 .boxAccueil > #encartRDV{
-    background: url(/src/img/consultation.png);
+    background: url(/gescabmed/src/img/consultation.png);
 	background-position:center center;
 	background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 }
 
 .boxAccueil > #encartStats{
-	background: url(/src/img/stats.jpg);
+	background: url(/gescabmed/src/img/stats.jpg);
 	background-position:center center;
 	background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 }
 
 /*

@@ -57,4 +57,35 @@ function lister(){
 	}
 }
 
+function profil($id){
+	//On teste que le paramètre de l'URL est bien un ID valide de médecin
+	if (($id != null && $id == intval($id)) && Medecin::exists($id)) {
+		//Traitement du POST
+		if(isset($_POST['posted'])){
+			$Mnom      = $_POST['nom'];	
+			$Mprenom   = $_POST['prenom'];
+			$Mcivilite = $_POST['civilite'];
+			echo $Mnom.$Mprenom;
+			$retour = Medecin::update($id, $Mnom, $Mprenom, $Mcivilite);
+		}
+
+		//Récupération des données pour la vue
+		$medecin = Medecin::selectByID($id);
+		include VIEW.'modifierMedecin.php';
+
+		//Tratiement du retour de la fonction update
+		if(isset($retour) && $retour){
+			echo "<p id='messageOK'>Modifications effetuées</p>";
+		}
+		elseif(isset($retour) && $retour){
+			echo "<p id='mErreur'>Erreur : Veuillez contacter votre administrateur.</p>";
+		}
+	}
+	else{
+		unset($_POST); //Supprimer le post pour éviter les conflits avec l'autre page
+		lister();
+		echo "<p id='mErreur'>Aucun médecin correspondant<p>";
+	}
+}
+
 ?>

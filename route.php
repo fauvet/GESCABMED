@@ -56,7 +56,7 @@ class Route {
 		if(isset($url[$index]) and $url[$index] != '') {
 			$this->action = $url[$index];
 			// et les paramètres si définis
-			for ($i = $index++; isset($url[$i]) && $url[$i] != ''; $i++) {
+			for ($i = $index+1; isset($url[$i]) && $url[$i] != ''; $i++) {
 				$this->params[$i - 2] = $url[$i];
 			}
 		} else {

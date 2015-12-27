@@ -24,8 +24,14 @@ function index(){
 		elseif ($_POST['duree'] <= 0) {
 			echo "<p id='mErreur'>Veuillez saisir une durée valide</p>";
 		}
+		//On effectue l'ajout dans la base de données
 		else {
-			Consultation::add()
+			if(Consultation::add()){
+				echo "<p class='messageOK'>Enregistré !</p>";
+			}
+			else{
+				echo "<p id='mErreur'>Erreur interne</p>";
+			}
 		}
 	}
 }
@@ -34,12 +40,12 @@ function index(){
 function afficher($numSem=null){
 	//On détermine le numéro de la semaine actuelle, et les jours.
 	$numSem = date('W');
-	$infoSemaine = array('lun'  => date('d/m', ),
-		                 'mar'  => date('d/m', ),
-		                 'mer'  => date('d/m', ),
-		                 'jeu'  => date('d/m', ),
-		                 'ven'  => date('d/m', ),
-		                 'sam'  => date('d/m', ));  
+	$infoSemaine = array('lun'  => date('d/m'),
+		                 'mar'  => date('d/m'),
+		                 'mer'  => date('d/m'),
+		                 'jeu'  => date('d/m'),
+		                 'ven'  => date('d/m'),
+		                 'sam'  => date('d/m'));  
 	include VIEW."afficheConsultations.php";
 }
 
