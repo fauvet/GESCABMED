@@ -60,21 +60,6 @@ class Medecin {
 
 
 	/**
-	* Fonction modifiant comme indiqué le nom et le prénom du médecin dont l'ID est passé en paramètres
-	* @param son $ID
-	* @param son $nom
-	* @param son $prénom
-	* @return vrai si l'opération s'est correctement effectuée, faux sinon
-	*/
-	static function modify($id, $nom, $prenom, $civilite){
-		$statement = DataBase::$instance->prepare("UPDATE medecin SET nom=':nom',prenom=':prenom', civilite=':civilite' WHERE id=:id");
-		$ret = $statement->execute(array(	':nom'    => $nom,
-											':prenom' => $prenom,
-											':id'	  => $id));
-		return $ret;
-	}
-
-	/**
 	* Fonction retournant l'ID correspodant aux médecins avec pour paramètres d'entrée
 	* @param leur $nom
 	* @param leur $prénom
@@ -150,6 +135,46 @@ class Medecin {
 			                             ':prenom' => $prenom,
 			                             ':civ'    => $civilite));
 		return $ret;
+	}
+
+	static function isAvailable($id_med, $date, $heure, $duree){
+		//On split l'heure pour l'exploiter
+		$hmsDebut = explode(':', $heure);
+		//On récupère l'heure de fin prévue pour la consultation
+		$hmsFin = explode(':', $heure);
+		while($duree >= 60) {
+				$hmsFin[0] += 1;
+				$duree -= 60;
+		}
+		if($duree < 60){$hmsFin[1] += $duree;}
+
+		//On sélectionne les rdv du médecin pour le jour donné, et qui commence avant la fin du RDV a ajouter
+		$statement = DataBase::$instance->prepare("SELECT * FROM rdv WHERE DATE(date) = DATE( :date ) AND  id_medecin = :idmed AND heure_debut < CAST( :heure AS time);");
+		//Préparation des variables (ajout des guillemets)
+		$h = $hmsFin[0].":".$hmsFin[1].":00";
+		$date = $date;
+		$ret = $statement->execute(array( ':date' => $date, ':heure' => $h, ':idmed' => $id_med));
+		if(!$ret){
+			return false;
+		}
+
+		$rdvs = $statement->fetchAll();
+		//On teste que les RDV ne sont pas en conflit
+		foreach ($rdvs as $rdv) {
+			$hms = explode(':', $rdv['heure_debut']);
+			$d = $rdv['duree'];
+			while($d >= 60) {
+					$hms[0] += 1;
+					$d -= 60;
+			}
+			if($d < 60){$hms[1] += $d;}
+			//On vérifie que la date de fin du rdv n'est pas supèrieure à la date de début du RDV a ajouter
+			if($hms[0]>$hmsDebut[0] || ($hms[0] == $hmsDebut[0] && $hms[1] > $hmsDebut[1])){
+				return false;
+			}
+		}
+		//Si on tout est bon, pas de conflit
+		return true;
 	}
 }
 

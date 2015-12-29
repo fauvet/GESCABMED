@@ -23,13 +23,11 @@ class Consultation {
 	static function sommeDesHeuresParMedecin() {
 			$ret = DataBase::$instance->query("SELECT nom, prenom, civilite, SUM(duree)/60 AS total FROM rdv, medecin WHERE medecin.id = rdv.id_medecin GROUP BY id_medecin ORDER BY total DESC;");
 			return $ret->fetchAll();
-		}			
-	}
+		}
 
 	static function add($date, $idPatient, $idMedecin, $heure, $duree){
 		$statement = DataBase::$instance->prepare("INSERT INTO rdv(date, id_patient, id_medecin, heure_debut, duree)
-			VALUES ( :date , :idP , :idM , :h , :d )
-			WHERE CURDATE() < :date;");
+			VALUES ( :date , :idP , :idM , :h , :d )");
 		$ret = $statement->execute(array(':date' => $date,
 			                             ':idP'  => $idPatient,
 			                             ':idM'  => $idMedecin,
@@ -38,8 +36,28 @@ class Consultation {
 		return $ret;
 	}
 
-	static function selectAllByWeek($numSemaine){
-		
+	static function selectAll($dateDebut=null, $dateFin=null){
+		//Si la date de début n'est pas indiquée on prend la date du jour
+		if ($dateDebut == null) { $dateDebut = date('Y-m-d');}
+		//S'il n'y a pas de date de fin alors on en met pas (logique)
+		$suiteRequete = (($dateFin == null )?"":" AND date <= :dateFin ");
+
+		//Traitement de la requete SQL
+		$statement = DataBase::$instance->prepare("SELECT * FROM rdv WHERE date >= :dateDebut ".$suiteRequete." ;");
+		$statement->bindParam(':dateDebut', $dateDebut);
+		if ($dateFin != null) {
+			$statement->bindParam(':dateFin', $dateFin);
+		}
+		$ret = $statement->execute();
+		if (!$ret) {return false;}
+		return $statement->fetchAll();
 	}
+
+	static function selectByWeek($numSem){
+		$ret = DataBase::$instance->query("SELECT * FROM rdv WHERE WEEK(date) = ".($numSem-1)."ORDER BY date;");
+		return $ret->fetchAll();
+	}
+
+}
 
 ?>

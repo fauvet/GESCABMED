@@ -1,8 +1,8 @@
 
 			<h1>Planning des consultations de la semaine</h1>		
 			<div id='Nsemaine'>
-				<a href=<?php echo "'".WEBROOT."consultation/afficher/".($idSem-1)."'"; ?> class='boutonSem'>Précédent</a>	
-				<a href=<?php echo "'".WEBROOT."consultation/afficher/".($idSem+1)."'"; ?> class='boutonSem'>Suivant</a>
+				<a href=<?php echo "'".WEBROOT."consultation/afficher/".($semPre)."'"; ?> class='boutonSem'>Précédent</a>	
+				<a href=<?php echo "'".WEBROOT."consultation/afficher/".($semSui)."'"; ?> class='boutonSem'>Suivant</a>
 			</div>
 			<table id='CalHead'>
 				<tr>

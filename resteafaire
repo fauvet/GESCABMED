@@ -6,8 +6,8 @@ ACCUEIL
 
 PATIENTS - MEDECINS
 [ok] Renommer le sous-menu medecin "Modifier" en "Lister"
-[  ] Permettre l'accès aux profils depuis le sous menu "Lister" en cliquant sur l'utilisateur
-[  ] Appliquer la modification du profil
+[ok] Permettre l'accès aux profils depuis le sous menu "Lister" en cliquant sur l'utilisateur
+[ok] Appliquer la modification du profil
 [ok] Centrer les boxs de selection pour suppression
 
 STATISTIQUES
