@@ -17,32 +17,30 @@
     font-weight: bold;
 }
 
-/**/
-#calendrier {
-    margin: 0 5%;
-    width: 90%;
-}
-
-table#calendrier tr{
-    height: 150px;
-}
-
-table#calendrier td{
-	width: 90%
-}
-
 /*Tableau des horraires*/
-#CalHead{
+
+#calendrier{
 	margin: 0 5%;
 	width: 90%;
 	padding: 0;
 	text-align: center;
 }
 
-#CalHead th{
+#calendrier th{
 	width: 10%;
 }
 
-#CalHead td{
-	width: calc( 90% / 11 );
+#calendrier tr:first-child > td{
+    height: 50px;
+}
+
+#calendrier td{
+    width: calc( 90% / 11 );
+    min-height: 80px;
+}
+
+a.rdv{
+    width: calc( 90% / 11 / 2 );
+    background-color: green;
+    height: 20px;
 }

@@ -20,6 +20,9 @@ function index(){
 		elseif ($_POST['duree'] <= 0) {
 			echo "<p id='mErreur'>Veuillez saisir une durée valide</p>";
 		}
+		elseif (strcmp($_POST['date'], date("Y-m-d")) < 0 || (strcmp($_POST['date'], date("Y-m-d")) == 0 && strcmp($_POST['heure'], date("G:i")) < 0) ) {
+			echo "<p id='mErreur'>La date du rendez-vous est déjà dépassée</p>";
+		}
 		//On effectue l'ajout dans la base de données
 		else {
 			$date      = $_POST['date'];
@@ -30,7 +33,7 @@ function index(){
 			//On vérifie que le médecin selectionné n'a pas de RDV au créneau indiqué
 			if(Medecin::isAvailable($idMedecin, $date, $heure, $duree)){
 				if(Consultation::add($date, $idPatient, $idMedecin, $heure, $duree)){
-					echo "<p id='mErreur'>Erreur interne</p>";
+					echo "<p id='messageOK'>Enregistré!</p>";
 				}
 				else{
 					echo "<p id='mErreur'>Erreur interne</p>";
@@ -47,15 +50,15 @@ function index(){
 function afficher($numSem=null){
 	//On détermine le numéro de la semaine actuelle, et la date des jours.
 	if($numSem == null || $numSem < 1 || $numSem > 53){$numSem = date('W');}
-	$semSui = ($numSem==1)? 53 : $numSem-1;
-	$semPre = ($numSem==53)? 1 : $numSem+1;
+	$semPre = ($numSem==1)? 53 : $numSem-1;
+	$semSui = ($numSem==53)? 1 : $numSem+1;
 	$numJour = date('w');
 	$jSem = array('Lundi ', 'Mardi ', 'Mercredi ', 'Jeudi ', 'Vendredi ', 'Samedi ');
 	for ($i=0; $i < 6; $i++) {
-		$jSem[$i] .= 1;
+		$jSem[$i] .= date("Y-m-d", time() + ((24*60*60)*($i+1-$numJour)+($numSem - date('W'))*7*24*60*60));
 	}
 	//On récuppère les consultations sur la semaine en cours
-	$rdvs = Consultation::selectByWeek($numSem);
+	$rdvs = Consultation::selectAll(str_replace("Lundi ", '', $jSem[0]), str_replace("Samedi ", '', $jSem[5]));
 	print_r($rdvs);
 	include VIEW."afficheConsultations.php";
 }

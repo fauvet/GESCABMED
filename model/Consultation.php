@@ -27,7 +27,7 @@ class Consultation {
 
 	static function add($date, $idPatient, $idMedecin, $heure, $duree){
 		$statement = DataBase::$instance->prepare("INSERT INTO rdv(date, id_patient, id_medecin, heure_debut, duree)
-			VALUES ( :date , :idP , :idM , :h , :d )");
+			VALUES ( :date , :idP , :idM , :h , :d );");
 		$ret = $statement->execute(array(':date' => $date,
 			                             ':idP'  => $idPatient,
 			                             ':idM'  => $idMedecin,
@@ -38,13 +38,14 @@ class Consultation {
 
 	static function selectAll($dateDebut=null, $dateFin=null){
 		//Si la date de début n'est pas indiquée on prend la date du jour
-		if ($dateDebut == null) { $dateDebut = date('Y-m-d');}
-		//S'il n'y a pas de date de fin alors on en met pas (logique)
-		$suiteRequete = (($dateFin == null )?"":" AND date <= :dateFin ");
+		if ($dateDebut == null) {$dateDebut = date('Y-m-d');}
+		//De meme pour la date de fin
+		$suiteRequete = (($dateFin == null )?" ":" AND date <= :dateFin ");
 
 		//Traitement de la requete SQL
-		$statement = DataBase::$instance->prepare("SELECT * FROM rdv WHERE date >= :dateDebut ".$suiteRequete." ;");
+		$statement = DataBase::$instance->prepare("SELECT * FROM rdv WHERE date >= :dateDebut".$suiteRequete."ORDER BY date;");
 		$statement->bindParam(':dateDebut', $dateDebut);
+		//S'il n'y a pas de date de fin alors on en met pas (logique)
 		if ($dateFin != null) {
 			$statement->bindParam(':dateFin', $dateFin);
 		}
@@ -53,12 +54,13 @@ class Consultation {
 		return $statement->fetchAll();
 	}
 
-	static function selectByWeek($numSem){
-		$ret = DataBase::$instance->query("SELECT * FROM rdv WHERE WEEK(date) = ".($numSem-1)."ORDER BY date;");
-		if ($ret) {
-			return $ret->fetchAll();
-		}
-		return false;
+	static function selectByWeek($numSem, $dateLundi) {
+		$statement = DataBase::$instance->prepare("SELECT * FROM rdv WHERE WEEK(date) = :numSem AND date >= DATE( :lundi ) ORDER BY date, heure_debut;");
+		$ret = $statement->execute(array(':numSem' => $numSem,
+			                             ':lundi'  => $dateLundi));
+		print_r($statement);
+		echo "<br>".$numSem."<br>".$dateLundi."<br>";
+		//return $ret->fetchAll();
 	}
 
 }

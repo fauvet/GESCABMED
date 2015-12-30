@@ -6,8 +6,8 @@
 					<select name='patient'>
 						<option value='Aucun'>Aucun</option>
 						<?php
-						foreach ($tabMedecin as $medecin) {
-							echo "\t\t\t\t\t\t<option value='".$medecin['id']."' >".$medecin['prenom'].' '.$medecin['nom']."</option>\n";
+						foreach ($tabPatient as $patient) {
+							echo "\t\t\t\t\t\t<option value='".$patient['id']."' >".$patient['prenom'].' '.$patient['nom']."</option>\n";
 						}
 						?>
 					</select><br>
@@ -15,8 +15,8 @@
 					<select name='medecin'>
 						<option value='Aucun'>Aucun</option>
 						<?php
-						foreach ($tabPatient as $patient) {
-							echo "\t\t\t\t\t\t<option value='".$patient['id']."' >".$patient['prenom'].' '.$patient['nom']."</option>\n";
+						foreach ($tabMedecin as $medecin) {
+							echo "\t\t\t\t\t\t<option value='".$medecin['id']."' >".$medecin['prenom'].' '.$medecin['nom']."</option>\n";
 						}
 						?>
 					</select><br>
