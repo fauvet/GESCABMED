@@ -4,7 +4,7 @@
 				<a href=<?php echo "'".WEBROOT."consultation/afficher/".($semPre)."'"; ?> class='boutonSem'>Précédent</a>	
 				<a href=<?php echo "'".WEBROOT."consultation/afficher/".($semSui)."'"; ?> class='boutonSem'>Suivant</a>
 			</div>
-			<table id='CalHead'>
+			<table id='calendrier'>
 				<tr>
 					<th>Jour</th>
 					<td>8 h</td>
@@ -19,24 +19,22 @@
 					<td>17 h</td>
 					<td>18 h</td>
 				</tr>
-			</table>
-			<table id='calendrier'>
 				<tr>
-					<th>Lundi</th><td></td>
+					<th><?php echo $jSem[0] ?></th><td><a class='rdv' href=''></a></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 				</tr>
 				<tr>
-					<th>Mardi</th><td></td>
+					<th><?php echo $jSem[1] ?></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 				</tr>
 				<tr>
-					<th>Mercredi</th><td></td>
+					<th><?php echo $jSem[2] ?></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 				</tr>
 				<tr>
-					<th>Jeudi</th><td></td>
+					<th><?php echo $jSem[3] ?></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 				</tr>
 				<tr>
-					<th>Vendredi</th><td></td>
+					<th><?php echo $jSem[4] ?></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 				</tr>
 				<tr>
-					<th>Samedi</th><td></td>
+					<th><?php echo $jSem[5] ?></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 				</tr>
 			</table>
