@@ -52,7 +52,7 @@ function afficher($numSem=null){
 	$numJour = date('w');
 	$jSem = array('Lundi ', 'Mardi ', 'Mercredi ', 'Jeudi ', 'Vendredi ', 'Samedi ');
 	for ($i=0; $i < 6; $i++) {
-		$jSem[$i] .= ;
+		$jSem[$i] .= 1;
 	}
 	//On récuppère les consultations sur la semaine en cours
 	$rdvs = Consultation::selectByWeek($numSem);

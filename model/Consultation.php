@@ -55,7 +55,10 @@ class Consultation {
 
 	static function selectByWeek($numSem){
 		$ret = DataBase::$instance->query("SELECT * FROM rdv WHERE WEEK(date) = ".($numSem-1)."ORDER BY date;");
-		return $ret->fetchAll();
+		if ($ret) {
+			return $ret->fetchAll();
+		}
+		return false;
 	}
 
 }
