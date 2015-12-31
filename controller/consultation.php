@@ -53,14 +53,54 @@ function afficher($numSem=null){
 	$semPre = ($numSem==1)? 53 : $numSem-1;
 	$semSui = ($numSem==53)? 1 : $numSem+1;
 	$numJour = date('w');
-	$jSem = array('Lundi ', 'Mardi ', 'Mercredi ', 'Jeudi ', 'Vendredi ', 'Samedi ');
-	for ($i=0; $i < 6; $i++) {
-		$jSem[$i] .= date("Y-m-d", time() + ((24*60*60)*($i+1-$numJour)+($numSem - date('W'))*7*24*60*60));
-	}
+	//Préparation du tableau "agenda" de la semaine
+	$agenda = array(array('j' => 'Lundi '),
+		          array('j' => 'Mardi '),
+		          array('j' => 'Mercredi '),
+	              array('j' => 'Jeudi '),
+	              array('j' => 'Vendredi '),
+	              array('j' => 'Samedi '));
 	//On récuppère les consultations sur la semaine en cours
-	$rdvs = Consultation::selectAll(str_replace("Lundi ", '', $jSem[0]), str_replace("Samedi ", '', $jSem[5]));
-	print_r($rdvs);
+	for ($i=0; $i < 6; $i++) {
+		//On récupère la date du jour en cours
+		$date = date("Y-m-d", time() + ((24*60*60)*($i+1-$numJour)+($numSem - date('W'))*7*24*60*60));
+		$agenda[$i]['j'] .= $date;
+		//on ajoute chaque consuultation à chaque heure donnée
+		$rdvs = Consultation::selectAll($date, $date);
+		foreach ($rdvs as $rdv) {
+			$h = substr($rdv['heure_debut'], 0, 2);
+			$agenda[$i][$h][$rdv['id']] = $rdv;
+			//On récupère les médecins et les patients
+			$med = Medecin::selectByID($rdv['id_medecin']);
+			$agenda[$i][$h][$rdv['id']]['medecin'] = substr(($med['prenom']), 0, 1).". ".$med['nom'];
+			$pat = Patient::select($rdv['id_patient']);
+			$agenda[$i][$h][$rdv['id']]['patient'] = substr(($pat['prenom']), 0, 1).". ".$pat['nom'];
+		}
+	}
+	//Inclusion de la vue
 	include VIEW."afficheConsultations.php";
+}
+
+function profil($id){
+	//On vérifie que le paramètre est bien un ID
+	if (($id != null && $id == intval($id)) && Consultation::exists($id)) {
+		//Gestion du POST
+		if (isset($_POST['posted'])) {
+			
+		}
+		//Inclusion de la page
+		$rdv = Consultation::select($id);
+		$tabMedecin = Medecin::selectAll();
+		$tabPatient = Patient::selectAll();
+		$pConsult = Patient::select($rdv['id_patient']);
+		$mConsult = Medecin::selectByID($rdv['id_medecin']);
+		include VIEW.'modifierConsultation.php';
+	}
+	else{
+		unset($_POST); //Supprimer le post pour éviter les conflits avec l'autre page
+		afficher();
+		echo "<p id='mErreur'>Aucune consultation correspondante<p>";
+	}
 }
 
 

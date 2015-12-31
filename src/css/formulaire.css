@@ -40,11 +40,11 @@ input[type=submit]:active {
 
 }
 
-input[type=reset] {
+input[type=reset], input[value=Supprimer] {
 	background-color: #CB3125;
 }
 
-input[type=reset]:active {
+input[type=reset]:active input[value=Supprimer]{
 	background-color: #49110D;
 	border: 1px inset black;
 }

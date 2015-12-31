@@ -20,14 +20,14 @@
 /*Tableau des horraires*/
 
 #calendrier{
-	margin: 0 5%;
-	width: 90%;
-	padding: 0;
-	text-align: center;
+    margin: 0 5%;
+    width: 90%;
+    padding: 0;
+    text-align: center;
 }
 
 #calendrier th{
-	width: 10%;
+    width: 10%;
 }
 
 #calendrier tr:first-child > td{
@@ -39,8 +39,29 @@
     min-height: 80px;
 }
 
-a.rdv{
-    width: calc( 90% / 11 / 2 );
-    background-color: green;
-    height: 20px;
+.rdv{
+    background-color: #A32D2D;
+    height: 25px;
+    margin: 3px 0;
+    transition: 0.5s;
+}
+
+.rdv:hover{
+    background-color: white;
+}
+
+/*CSS de la boxe d'info sur le RDV*/
+
+div.afficheRDV{
+    display: none;
+    position: absolute;
+    padding: 10px 20px;
+    margin-top: 3px;
+    margin-left: -10px;
+    background-color: white;
+    box-shadow: 1px 1px 3px;
+}
+
+.rdv:hover div.afficheRDV{
+    display: block;
 }

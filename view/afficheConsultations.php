@@ -19,22 +19,26 @@
 					<td>17 h</td>
 					<td>18 h</td>
 				</tr>
-				<tr>
-					<th><?php echo $jSem[0] ?></th><td><a class='rdv' href=''></a></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-				</tr>
-				<tr>
-					<th><?php echo $jSem[1] ?></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-				</tr>
-				<tr>
-					<th><?php echo $jSem[2] ?></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-				</tr>
-				<tr>
-					<th><?php echo $jSem[3] ?></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-				</tr>
-				<tr>
-					<th><?php echo $jSem[4] ?></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-				</tr>
-				<tr>
-					<th><?php echo $jSem[5] ?></th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-				</tr>
-			</table>
+<?php
+	
+	foreach ($agenda as $jour) {
+		echo "\t\t\t\t<tr>\n";
+		echo "\t\t\t\t\t<th>".$jour['j']."</th>\n";
+		for ($h=8; $h <= 18; $h++) { 
+			echo "\t\t\t\t\t<td>\n";
+			if (array_key_exists( (($h<10)?'0'.$h:$h), $jour)) {
+				foreach ($jour[$h] as $rdv) {
+					echo "\t\t\t\t\t\t<div class='rdv'>\n";
+					echo "\t\t\t\t\t\t\t<a href='".WEBROOT."consultation/profil/".$rdv['id']."'>".$rdv['medecin']."</a>\n";
+					//Division cachée pour l'affichage de la consultation
+					echo "\t\t\t\t\t\t\t<div class='afficheRDV'><p><b>Patient</b> : ".$rdv['patient']."<br><b>Médecin</b> : ".$rdv['medecin']."<br>";
+					echo "<b>Heure</b> : ".substr($rdv['heure_debut'], 0, 5)."<br><b>Durée : </b>".$rdv['duree']." min</p></div>\n";
+					echo "\t\t\t\t\t\t</div>\n";
+				}
+			}
+			echo "\t\t\t\t\t</td>\n";
+		}
+		echo "\t\t\t\t</tr>\n";
+	}
+	
+?>

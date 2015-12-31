@@ -54,13 +54,15 @@ class Consultation {
 		return $statement->fetchAll();
 	}
 
-	static function selectByWeek($numSem, $dateLundi){
-		$statement = DataBase::$instance->prepare("SELECT * FROM rdv WHERE WEEK(date) = :numSem AND date >= DATE( :lundi ) ORDER BY date, heure_debut;");
-		$ret = $statement->execute(array(':numSem' => $numSem,
-			                             ':lundi'  => $dateLundi));
-		print_r($statement);
-		echo "<br>".$numSem."<br>".$dateLundi."<br>";
-		//return $ret->fetchAll();
+	static function exists($id){
+		$ret = DataBase::$instance->query("SELECT * FROM rdv WHERE id = ".$id." ;");
+		$tab = $ret->fetch();
+		return $tab['id'] == $id;
+	}
+
+	static function select($id){
+		$ret = DataBase::$instance->query("SELECT * FROM rdv WHERE id = ".$id." ;");
+		return $ret->fetch();
 	}
 
 }
