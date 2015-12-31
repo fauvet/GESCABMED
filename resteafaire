@@ -1,7 +1,7 @@
 ACCUEIL
 [ok] Enlever les liens inutiles dues à la modification de l'architecture du site.
 [ok] Modifier les paragraphes de la pages d'accueil dues à la modification de l'architecture du site
-[  ] Réparer le format des images "Consultations" et "Statistiques"
+[ok] Réparer le format des images "Consultations" et "Statistiques"
 [  ] Enlever l'icône connexion en haut à ^gauche sur la page d'ACCUEIL
 
 PATIENTS - MEDECINS
@@ -11,7 +11,7 @@ PATIENTS - MEDECINS
 [ok] Centrer les boxs de selection pour suppression
 
 STATISTIQUES
-[  ] Ajouter un jeu d'essai de consultation suffisant pour vérifier si la page fonctionne bien
+[ok] Ajouter un jeu d'essai de consultation suffisant pour vérifier si la page fonctionne bien
 [ok] Réparer l'erreur affiché
 [  ] Eventuellement prendre en compte le fait que la somme des heures est faite pour les heures déjà faite et non à venir ??? Interprétation
 [ok] Suppression du bouton supprimer depuis le sous-menu "Comparateur"
@@ -21,7 +21,7 @@ CONSULTATION
 [  ] Rendre la rubrique fonctionnelle
 
 SQL
-[  ] Faire de la protection (ex :
+[ok] Faire de la protection (ex :
 	- ne pas ajouter un patient ayant une date de naissance supérieur à la date
 	- faire en sorte que le numéro de sécu ne contiennent que des chiffres voir des espaces, faire attention à la taille que cela prend sans les espaces
 	- ...)
