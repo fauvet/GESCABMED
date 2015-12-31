@@ -21,7 +21,7 @@ DataBase::construct();
 class Consultation {
 
 	static function sommeDesHeuresParMedecin() {
-			$ret = DataBase::$instance->query("SELECT nom, prenom, civilite, SUM(duree)/60 AS total FROM rdv, medecin WHERE medecin.id = rdv.id_medecin GROUP BY id_medecin ORDER BY total DESC;");
+			$ret = DataBase::$instance->query("SELECT nom, prenom, civilite, SUM(duree) AS total FROM rdv, medecin WHERE medecin.id = rdv.id_medecin GROUP BY id_medecin ORDER BY total DESC;");
 			return $ret->fetchAll();
 		}
 
