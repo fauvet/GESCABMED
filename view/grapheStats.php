@@ -1,4 +1,4 @@
-
+				Affichage de la répartition des usagers selon les criètes suivant : 
 				<form action='' method='POST'>
 					<table>
 						<tr>
